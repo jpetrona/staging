@@ -1,0 +1,761 @@
+<?php
+// ------------------------------------------------ 
+// ---------- Options Framework Theme -------------
+// ------------------------------------------------
+require_once ('admin/index.php');
+// --------------- Load Scripts -----------------
+include("functions/scripts.php");
+// --------------- Load Custom Widgets ----------
+include("functions/widgets.php");
+include("functions/widgets/widget-tags.php");
+include("functions/widgets/widget-posts.php");
+include("functions/widgets/widget-top-posts.php");
+include("functions/widgets/widget-cat.php");
+include("functions/widgets/widget-feedburner.php");
+include("functions/widgets/widget-review.php");
+include("functions/widgets/widget-review-rand.php");
+include("functions/widgets/widget-review-recent.php");
+include("functions/widgets/widget-categories.php");
+include("functions/widgets/widget-banner.php");
+// --------------- Load Custom ------------------
+include("functions/custom/comments.php");
+// ------ Content width -------------------------
+if ( ! isset( $content_width ) ) $content_width = 950;
+// ------ Post thumbnails ----------------------- 
+if ( function_exists( 'add_theme_support' ) ) {
+	add_theme_support( 'post-thumbnails' );
+    add_image_size( 'thumbnail-gallery-single', 180, 180, true ); // Gallery thumbnails 
+    add_image_size( 'thumbnail-blog-featured', 300, 165, true ); // Blog thumbnails home featured posts 
+    add_image_size( 'thumbnail-blog-masonry', 300, '', true ); // Blog thumbnails home masonry style 
+    add_image_size( 'thumbnail-widget', 250, 130, true ); // Sidebar Widget thumbnails 
+    add_image_size( 'thumbnail-widget-small', 55, 55, true ); // Sidebar Widget thumbnails small 
+	add_image_size( 'thumbnail-single-image', 950, '', true ); // Single thumbnails 
+}  
+
+// ---------------------------------------------- 
+// ------ feed links ---------------------------- 
+// ---------------------------------------------- 
+ add_theme_support( 'automatic-feed-links' );  
+
+// ---------------------------------------------- 
+// ------ title tag ---------------------------- 
+// ---------------------------------------------- 
+ add_theme_support( 'title-tag' ); 
+  
+// ---------------------------------------------- 
+// ---- Makes Theme available for translation --- 
+// ---------------------------------------------- 
+ load_theme_textdomain( 'anthemes', get_template_directory() . '/languages' );  
+
+// ---------------------------------------------- 
+// -------------- Register Menu ----------------- 
+// ---------------------------------------------- 
+add_theme_support( 'nav-menus' ); 
+add_action( 'init', 'register_my_menus_anthemes' );  
+
+function register_my_menus_anthemes() { 
+    register_nav_menus( 
+        array( 
+            'primary-menu' => esc_html__( 'Header Navigation', 'anthemes' ), 
+            'secondary-menu' => esc_html__( 'Categories Navigation', 'anthemes' ), 
+        ) 
+    ); 
+}  
+
+// ------------------------------------------------  
+// ---- Add  rel attributes to embedded images ---- 
+// ------------------------------------------------  
+function insert_rel_anthemes($content) { 
+    $pattern = '/<a(.*?)href="(.*?).(bmp|gif|jpeg|jpg|png)"(.*?)>/i'; 
+    $replacement = '<a$1href="$2.$3" class=\'wp-img-bg-off\' rel=\'mygallery\'$4>'; 
+    $content = preg_replace( $pattern, $replacement, $content ); 
+    return $content; 
+} 
+add_filter( 'the_content', 'insert_rel_anthemes' );  
+
+// ------------------------------------------------ 
+// ---- Add  rel attributes AI TYPE  to embedded images ---- 
+// ------------------------------------------------   
+
+add_filter('upload_mimes', 'custom_upload_mimes'); 
+function custom_upload_mimes ( $existing_mimes=array() )  
+{  
+   // Add *.EPS files to Media upload 
+    $existing_mimes['eps'] = 'application/postscript'; 
+    // Add *.AI files to Media upload 
+     $existing_mimes['ai'] = 'application/postscript';  
+    return $existing_mimes; 
+} 
+  
+// ---- Add  rel attributes to gallery images ---- 
+add_filter('wp_get_attachment_link', 'add_gallery_id_rel_anthemes'); 
+function add_gallery_id_rel_anthemes($link) { 
+    global $post; 
+    return str_replace('<a href', '<a rel="mygallery" class="wp-img-bg-off" href', $link); 
+}   
+
+// ------------------------------------------------  
+// --- Pagination class/style for entry articles -- 
+// ------------------------------------------------  
+function custom_nextpage_links_anthemes($defaults) { 
+$args = array( 
+'before' => '<div class="my-paginated-posts"><p>' . '<span>', 
+'after' => '</span></p></div>', 
+); 
+$r = wp_parse_args($args, $defaults); 
+return $r; 
+} 
+add_filter('wp_link_pages_args','custom_nextpage_links_anthemes');   
+
+// ------------------------------------------------  
+// ------------ Nr of Topics for Tags ------------- 
+// ------------------------------------------------   
+add_filter ( 'wp_tag_cloud', 'tag_cloud_count_anthemes' ); 
+function tag_cloud_count_anthemes( $return ) { 
+return preg_replace('#(<a[^>]+\')(\d+)( topics?\'[^>]*>)([^<]*)<#imsU','$1$2$3$4 <span>($2)</span><',$return); 
+}   
+
+// ------------------------------------------------  
+// --------------- Posts Time Ago ----------------- 
+// ------------------------------------------------    
+
+function time_ago_anthemes( $type = 'post' ) { 
+    $d = 'comment' == $type ? 'get_comment_time' : 'get_post_time'; 
+    return human_time_diff($d('U'), current_time('timestamp')) . " "; 
+}   
+
+// ------------------------------------------------  
+// --------------- Author Social Links ------------ 
+// ------------------------------------------------  
+function anthemes_contactmethods( $contactmethods ) { 
+    $contactmethods['twitter']   = ''. esc_html__('Twitter Username', 'anthemes') .''; 
+    $contactmethods['facebook']  = ''. esc_html__('Facebook Username', 'anthemes') .''; 
+    $contactmethods['google']    = ''. esc_html__('Google+ Username', 'anthemes') .''; 
+    return $contactmethods; 
+} 
+add_filter('user_contactmethods','anthemes_contactmethods',10,1);   
+
+// ---------------------------------------------- 
+// ---------- excerpt length adjust ------------- 
+// ---------------------------------------------- 
+function anthemes_excerpt($str, $length, $minword = 3) 
+{ 
+    $sub = ''; 
+    $len = 0; 
+    foreach (explode(' ', $str) as $word) 
+    { 
+        $part = (($sub != '') ? ' ' : '') . $word; 
+        $sub .= $part; 
+        $len += strlen($part); 
+         
+        if (strlen($word) > $minword && strlen($sub) >= $length) 
+        { 
+            break; 
+        } 
+    } 
+    return $sub . (($len < strlen($str)) ? ' ..' : ''); 
+} 
+    
+// ------------------------------------------------  
+// ------------ Number of post views -------------- 
+// ------------------------------------------------  
+// function to display number of posts. 
+function getPostViews_anthemes($postID){ 
+    $count_key = 'post_views_count'; 
+    $count = get_post_meta($postID, $count_key, true); 
+    if($count==''){ 
+        delete_post_meta($postID, $count_key); 
+        add_post_meta($postID, $count_key, '0'); 
+        return '0 <span>' . esc_html__('View', 'anthemes') . '</span>'; 
+    } 
+    return $count.' <span>' . esc_html__('Views', 'anthemes') . '</span>'; 
+}  
+// function to count views. 
+function setPostViews_anthemes($postID) { 
+    $count_key = 'post_views_count'; 
+    $count = get_post_meta($postID, $count_key, true); 
+    if($count==''){ 
+        $count = 0; 
+        delete_post_meta($postID, $count_key); 
+        add_post_meta($postID, $count_key, '0'); 
+    }else{ 
+        $count++; 
+        update_post_meta($postID, $count_key, $count); 
+    } 
+}   
+// ------------------------------------------------  
+// ------------ Meta Box -------------------------- 
+// ------------------------------------------------ 
+$prefix = 'anthemes_'; 
+global $meta_boxes; 
+$meta_boxes = array();  
+// 1st meta box 
+$meta_boxes[] = array( 
+    'id' => 'standard', 
+    'title' => esc_html__( 'Article Page Options', 'anthemes' ), 
+    'context' => 'normal', 
+    'priority' => 'high', 
+    'autosave' => true,  
+    // Youtube 
+    'fields' => array( 
+        // TEXT 
+        array( 
+            // Field name - Will be used as label 
+            'name'  => esc_html__( 'Video Youtube', 'anthemes' ), 
+            // Field ID, i.e. the meta key 
+            'id'    => "{$prefix}youtube", 
+            // Field description (optional) 
+            'desc'  => esc_html__( 'Add Youtube code ex: HIrMIeN5ttE', 'anthemes' ), 
+            'type'  => 'text', 
+            // Default value (optional) 
+            'std'   => esc_html__( '', 'anthemes' ), 
+            // CLONES: Add to make the field cloneable (i.e. have multiple value) 
+            'clone' => false, 
+        ),   
+    // Vimeo 
+        // TEXT 
+        array( 
+            // Field name - Will be used as label 
+            'name'  => esc_html__( 'Video Vimeo', 'anthemes' ), 
+            // Field ID, i.e. the meta key 
+            'id'    => "{$prefix}vimeo", 
+            // Field description (optional) 
+            'desc'  => esc_html__( 'Add Vimeo code ex: 7449107', 'anthemes' ), 
+            'type'  => 'text', 
+            // Default value (optional) 
+            'std'   => esc_html__( '', 'anthemes' ), 
+            // CLONES: Add to make the field cloneable (i.e. have multiple value) 
+            'clone' => false, 
+        ),  
+    // Gallery 
+        // IMAGE UPLOAD 
+        array( 
+            'name' => esc_html__( 'Gallery', 'anthemes' ), 
+            'id'   => "{$prefix}slider", 
+            // Field description (optional) 
+            'desc'  => esc_html__( 'Image with any size!', 'anthemes' ),             
+            'type' => 'image_advanced', 
+        ),  
+    // Hide Featured Image 
+        // CheckBox 
+        array( 
+            'name' => esc_html__( 'Featured Image', 'anthemes' ), 
+            'id'   => "{$prefix}hideimg", 
+            'desc'  => esc_html__( 'Hide Featured Image on single page for this article', 'anthemes' ), 
+            'type' => 'checkbox', 
+        ),   
+    ),  
+);    
+/** 
+ * Register meta boxes 
+ * 
+ * @return void 
+ */ 
+function anthemes_register_meta_boxes() 
+{ 
+    // Make sure there's no errors when the plugin is deactivated or during upgrade 
+    if ( !class_exists( 'RW_Meta_Box' ) ) 
+        return;  
+
+    global $meta_boxes; 
+    foreach ( $meta_boxes as $meta_box ) 
+    { 
+        new RW_Meta_Box( $meta_box ); 
+    } 
+} 
+// Hook to 'admin_init' to make sure the meta box class is loaded before 
+// (in case using the meta box class in another plugin) 
+// This is also helpful for some conditionals like checking page template, categories, etc. 
+add_action( 'admin_init', 'anthemes_register_meta_boxes' );   
+
+// ------------------------------------------------  
+// ---------- TGM_Plugin_Activation ------------- 
+// ------------------------------------------------  
+require_once dirname( __FILE__ ) . '/functions/custom/class-tgm-plugin-activation.php'; 
+add_action( 'tgmpa_register', 'my_theme_register_required_plugins' );  
+
+function my_theme_register_required_plugins() {  
+
+    $plugins = array( 
+        array( 
+            'name'                  => 'Meta Box', // The plugin name 
+            'slug'                  => 'meta-box', // The plugin slug (typically the folder name) 
+            'source'                => get_stylesheet_directory() . '/plugins/meta-box.zip', // The plugin source 
+            'required'              => true, // If false, the plugin is only 'recommended' instead of required 
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented 
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch 
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins 
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL 
+        ),  
+        array( 
+            'name'                  => 'Shortcodes', // The plugin name 
+            'slug'                  => 'anthemes-shortcodes', // The plugin slug (typically the folder name) 
+            'source'                => get_stylesheet_directory() . '/plugins/anthemes-shortcodes.zip', // The plugin source 
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required 
+            'version'               => '1.2', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented 
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch 
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins 
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL 
+        ),  
+        array( 
+            'name'                  => 'Reviews', // The plugin name 
+            'slug'                  => 'anthemes-reviews', // The plugin slug (typically the folder name) 
+            'source'                => get_stylesheet_directory() . '/plugins/anthemes-reviews.zip', // The plugin source 
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required 
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented 
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch 
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins 
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL 
+        ),  
+        array( 
+            'name'                  => 'Thumbs Likes System', // The plugin name 
+            'slug'                  => 'thumbs-rating', // The plugin slug (typically the folder name) 
+            'source'                => get_stylesheet_directory() . '/plugins/thumbs-rating.zip', // The plugin source 
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required 
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented 
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch 
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins 
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL 
+        ),  
+        array( 
+            'name'                  => 'Google fonts', // The plugin name 
+            'slug'                  => 'wp-google-fonts', // The plugin slug (typically the folder name) 
+            'source'                => get_stylesheet_directory() . '/plugins/wp-google-fonts.zip', // The plugin source 
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required 
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented 
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch 
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins 
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL 
+        ),   
+        array( 
+            'name'                  => 'Custom Sidebars', 
+            'slug'                  => 'custom-sidebars', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'Resume Builder', 
+            'slug'                  => 'resume-builder', 
+            'required'              => false, 
+            'version'               => '', 
+        ),          
+        array( 
+            'name'                  => 'Daves WordPress Live Search', 
+            'slug'                  => 'daves-wordpress-live-search', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'Multi-column Tag Map', 
+            'slug'                  => 'multi-column-tag-map', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'Responsive Menu', 
+            'slug'                  => 'responsive-menu', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'Social Count Plus', 
+            'slug'                  => 'social-count-plus', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'Social Share button', 
+            'slug'                  => 'social-share-button', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+        array( 
+            'name'                  => 'WP-PageNavi', 
+            'slug'                  => 'wp-pagenavi', 
+            'required'              => false, 
+            'version'               => '', 
+        ),  
+    );  
+    // Change this to your theme text domain, used for internationalising strings 
+    $theme_text_domain = 'tgmpa'; 
+    $config = array( 
+        'domain'            => $theme_text_domain,          // Text domain - likely want to be the same as your theme. 
+        'default_path'      => '',                          // Default absolute path to pre-packaged plugins 
+        'parent_menu_slug'  => 'themes.php',                // Default parent menu slug 
+        'parent_url_slug'   => 'themes.php',                // Default parent URL slug 
+        'menu'              => 'install-required-plugins',  // Menu slug 
+        'has_notices'       => true,                        // Show admin notices or not 
+        'is_automatic'      => false,                       // Automatically activate plugins after installation or not 
+        'message'           => '',                          // Message to output right before the plugins table 
+        'strings'           => array( 
+            'page_title'                                => esc_html__( 'Install Required Plugins', $theme_text_domain ), 
+            'menu_title'                                => esc_html__( 'Install Plugins', $theme_text_domain ), 
+            'installing'                                => esc_html__( 'Installing Plugin: %s', $theme_text_domain ), // %1$s = plugin name 
+            'oops'                                      => esc_html__( 'Something went wrong with the plugin API.', $theme_text_domain ), 
+            'notice_can_install_required'               => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s) 
+            'notice_can_install_recommended'            => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ), // %1$s = plugin name(s) 
+            'notice_cannot_install'                     => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ), // %1$s = plugin name(s) 
+            'notice_can_activate_required'              => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.' ), // %1$s = plugin name(s) 
+            'notice_can_activate_recommended'           => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.' ), // %1$s = plugin name(s) 
+            'notice_cannot_activate'                    => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.' ), // %1$s = plugin name(s) 
+            'notice_ask_to_update'                      => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.' ), // %1$s = plugin name(s) 
+            'notice_cannot_update'                      => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ), // %1$s = plugin name(s) 
+            'install_link'                              => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ), 
+            'activate_link'                             => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ), 
+            'return'                                    => esc_html__( 'Return to Required Plugins Installer', $theme_text_domain ), 
+            'plugin_activated'                          => esc_html__( 'Plugin activated successfully.', $theme_text_domain ), 
+            'complete'                                  => esc_html__( 'All plugins installed and activated successfully. %s', $theme_text_domain ), // %1$s = dashboard link 
+            'nag_type'                                  => 'updated' // Determines admin notice type - can only be 'updated' or 'error' 
+        ) 
+    );  
+    tgmpa( $plugins, $config );  
+} 
+function featuredtoRSS($content) {
+    global $post;
+    if ( has_post_thumbnail( $post->ID ) ){
+        $content = '<div>' . get_the_post_thumbnail( $post->ID, 'large', array( 'style' => 'margin-bottom: 15px;' ) ) . '</div>' . $content;
+    }
+    return $content;
+}
+
+add_filter('the_excerpt_rss', 'featuredtoRSS');
+add_filter('the_content_feed', 'featuredtoRSS');   
+/**
+* Disable admin bar on the frontend of your website
+* for subscribers.
+*/
+/*function themeblvd_disable_admin_bar() {
+if( ! current_user_can('edit_posts') )
+add_filter('show_admin_bar', '__return_false');
+}
+add_action( 'after_setup_theme', 'themeblvd_disable_admin_bar' );
+*/
+/**
+* Redirect back to homepage and not allow access to
+* WP admin for Subscribers.
+*/
+/*function themeblvd_redirect_admin(){
+if ( ! current_user_can( 'edit_posts' ) ){
+wp_redirect( site_url() );
+exit;
+}
+}
+add_action( 'admin_init', 'themeblvd_redirect_admin' );*/ 
+add_action('after_setup_theme', 'remove_admin_bar');
+
+function remove_admin_bar() {
+if (!current_user_can('administrator') && !is_admin()) {
+  show_admin_bar(false);
+}
+} 
+function example_ajax_request() {
+
+     global $wpdb; // this is how you get access to the database
+
+    // The $_REQUEST contains all the data sent via ajax
+
+    if ( isset($_REQUEST) ) {
+        $fruit = $_REQUEST['fruit'];
+        update_user_meta( get_current_user_id() , 'nickname', $fruit );
+        update_user_meta( get_current_user_id() , 'last_name', $fruit );
+        echo $fruit;
+     }
+    // Always die in functions echoing ajax content
+   exit();
+}
+add_action( 'wp_ajax_example_ajax_request', 'example_ajax_request' );
+
+function firstname_change_ajax_request() {
+
+     global $wpdb; // this is how you get access to the database
+
+    // The $_REQUEST contains all the data sent via ajax
+
+    if ( isset($_REQUEST) ) {
+        $fruit = $_REQUEST['fruit'];
+        update_user_meta( get_current_user_id() , 'first_name', $fruit );
+        echo $fruit;
+     }
+    // Always die in functions echoing ajax content
+   exit();
+}
+add_action( 'wp_ajax_firstname_change_ajax_request', 'firstname_change_ajax_request' ); 
+    add_action( 'init', 'blockusers_init' );
+    function blockusers_init() {
+
+        if ( is_admin() && ! current_user_can( 'administrator' ) && 
+
+           ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+
+            wp_redirect( home_url() );
+            exit;
+        } 
+    }
+add_filter( 'posts_where', 'devplus_wpquery_where' );
+function devplus_wpquery_where( $where ){
+    global $current_user;
+
+    if( is_user_logged_in() ){
+         // logged in user, but are we viewing the library?
+         if( isset( $_POST['action'] ) && ( $_POST['action'] == 'query-attachments' ) ){
+            // here you can add some extra logic if you'd want to.
+            $where .= ' AND post_author='.$current_user->data->ID;
+        }
+    }
+    return $where;
+}
+// Apply filter
+add_filter( 'get_avatar' , 'my_custom_avatar' , 10 , 5 );
+function my_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+    $previous_avatar = $avatar;
+    $user = false;
+    if ( is_numeric( $id_or_email ) ) {
+        $id = (int) $id_or_email;
+        $user = get_user_by( 'id' , $id );
+    } elseif ( is_object( $id_or_email ) ) {
+        if ( ! empty( $id_or_email->user_id ) ) {
+            $id = (int) $id_or_email->user_id;
+            $user = get_user_by( 'id' , $id );
+        }
+    } else {
+        $user = get_user_by( 'email', $id_or_email );  
+    }
+    if ( $user && is_object( $user ) ) {
+    $upload_dir = wp_upload_dir();
+    $link = $upload_dir['basedir']."/avatar/" .  $user->data->ID.".jpg";
+    $link = str_replace("\\","/",$link);
+      $site_link =  site_url()."/wp-content/uploads/avatar/".$user->data->ID.".jpg";
+      $avatar = $site_link;
+      if( file_exists($link) )
+      {
+         $avatar = "<img alt='{$alt}' src='{$avatar}' class='codey avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";  
+      } 
+      else
+      {
+        $avatar =  $previous_avatar;
+      } 
+    }
+    return $avatar;
+}
+
+function Nasdaq_tag_symbol(  $id )
+{  
+		$post_tag_list = $tags = wp_get_post_tags( $id ); 
+		$result = '';
+		if ($tags){ 
+		$post_tag_list_str  = '';
+		foreach ($post_tag_list as $key => $value) { 
+		$post_tag_list_str .= ",";
+		$post_tag_list_str .= '"'.$value->name.'"';
+		}
+		$result =  substr($post_tag_list_str , 1 );
+		}
+		return $result;
+		
+}
+add_filter('post_thumbnail_html', 'transparent_bar', 10, 5);
+function transparent_bar( $html, $post_id, $post_thumbnail_id, $size, $attr )
+{
+    $nasdaq_data = Nasdaq_tag_symbol( get_the_ID() ); //|| ( strcmp( $size , "thumbnail-blog-masonry" ) != 0 ) || ( strcmp( $size , "thumbnail-single-image" ) != 0 )
+    if( $nasdaq_data == ""  )
+    {  
+        return $html;
+    } 
+    if( strcmp( $size , "thumbnail-blog-masonry" ) == 0  )   //  strcmp( $size , "thumbnail-single-image" ) == 0  ||
+    {
+    $string = <<< heredoc
+         <div class="thumbnail-function-php" >
+             {$html}
+               <div name="trig" class="multiple-trig-function-php trig-function-php">
+                <input type="hidden" value='{$nasdaq_data}' class="tag-list"> 
+               </div>
+              <div class="thumbnail-transparent-bar" style="display:none;"></div>
+        </div>
+heredoc;
+    }
+    else
+    {
+        return $html;
+    }          
+	return $string;
+}
+
+if( !is_admin() )
+{
+   add_filter( 'the_author', 'feed_author' ); 
+}
+function feed_author($name) {
+    $data  = get_the_author_meta( 'user_login' );
+    $input = '//'$data..$_SERVER['SERVER_NAME'];
+    $string .= $input."/myprofile";
+
+       $tag_addition = "<input type='hidden' value='{$input}'><a class='the_author_link' style='color:blue;border-bottom:none;' href='{$string}'>$name</a>";
+
+    return $tag_addition;
+}
+
+function the_source($postid){
+                            global $wpdb;
+                            $no_url = false;
+                            $source = get_post_meta($postid, "source",true);
+                            $source_link = get_post_meta($postid,"source_link",true );
+
+                            if( $source != '' ){
+                            $d = array("$source.png","$source.gif","$source.GIF","$source.JPEG","$source.jpeg","$source.jpg","$source.JPG","$source.png" );
+                            $name = "`sourceimg`='$d[0]' OR `sourceimg`='$d[1]' OR `sourceimg`='$d[2]' OR `sourceimg`='$d[3]' OR `sourceimg`='$d[4]' OR `sourceimg`='$d[5]' OR `sourceimg`='$d[6]' OR `sourceimg`='$d[7]'";
+
+                            if( $source_link == '')
+                            {
+                                $sql = "SELECT `sourceurl` FROM a1_source WHERE $name";
+                                $result = $wpdb->get_results($sql) or $no_url = true;
+                             
+                                if( $no_url )
+                                {
+                                    $link = '';
+                                }
+                                else
+                                {
+                                    $pos = strpos( $result[0]->sourceurl, "http");
+                                    if( $pos === false )
+                                    {
+                                        $link = "https://".$result[0]->sourceurl;
+                                    }
+                                    else
+                                    {
+                                        $link = $result[0]->sourceurl;
+                                    }
+
+                                }
+                            }else{
+                                    $link = $source_link;
+                            }
+
+                                $link_for_source_images = get_template_directory_uri()."/images/source/".str_replace('.','',str_replace(' ','', $source )).".png";
+                                $img_source = "<a href='{$link}'><img src='{$link_for_source_images}' style='height:auto;width:auto;'/></a>";
+                                echo  $img_source;
+                            }
+}
+
+if( !is_admin() )
+{
+   add_filter( 'get_comment_author_link', 'get_comment_author_link_edit' ); 
+} 
+
+function get_comment_author_link_edit($name){
+    $name = strip_tags( $name );
+    return $name;    
+
+}
+function acf_load_select_field_choices( $field ) {
+    $field['choices'] = array();
+   // get the textarea value from options page without any formatting
+    global $wpdb;
+    $sql = "SELECT `sourcename`,`sourceimg` FROM a1_source";
+    $result = $wpdb->get_results($sql) or die ('Error, query failed');
+    $choices = array();
+    foreach ( $result as $key => $value) {
+        $img = pathinfo( $result[$key]->sourceimg , PATHINFO_FILENAME );
+        $choices[ $img ] = $result[$key]->sourcename;
+    }
+    $choices = array_map('trim', $choices);
+    $field['choices'] = $choices ;
+    return $field;
+}
+add_filter('acf/load_field/name=source', 'acf_load_select_field_choices');
+function acf_context( $field ) {
+    $field['choices'] = array();
+    // get the textarea value from options page without any formatting
+    global $wpdb;
+    $sql = "SELECT `contextname`,`contextimg` FROM a1_context";
+    $result = $wpdb->get_results($sql) or die ('Error, query failed');
+    $choices = array();
+    foreach ( $result as $key => $value) {
+      /*  $img = pathinfo( $result[$key]->contextimg , PATHINFO_FILENAME );
+        if( $img == ''){
+            $img = $result[$key]->contextname;
+        }*/
+        $choices[ $result[$key]->contextname ] = $result[$key]->contextname;
+    }
+    $choices = array_unique( $choices );
+    $choices = array_map('trim', $choices);
+    $field['choices'] = $choices ;
+    return $field;
+}
+add_filter('acf/load_field/name=label_images', 'acf_context');
+
+function acf_context_add( $post_id ){
+    global $wpdb;
+    $sql = "SELECT `contextname`,`contextimg` FROM a1_context";
+    $result = $wpdb->get_results($sql) or die ('Error, query failed');
+    $get_context_by_post = str_replace('.','',str_replace(' ','', get_post_meta( $post_id  , "label_images",true)));
+    foreach ( $result as $key => $value) {
+        if( strcmp( trim($result[$key]->contextname) , trim($get_context_by_post ) ) == 0 )
+        {
+            if( $result[$key]->contextimg == '' ){ return '<div ></div>';}
+            $link = get_template_directory_uri().'/images/context/'.$result[$key]->contextimg;
+            $html =  '<div><img alt="'.trim($result[$key]->contextname).'" src="'.$link.'" style="max-width:60px;" /></div>';
+            return $html;
+        }
+    }
+    return '<div></div>';
+}
+function prevent_wp_login_page( $username ){
+     wp_redirect(home_url()."/sign-in/?action=Login-Failed");
+}
+add_filter( 'wp_login_failed', prevent_wp_login_page , 20, 6 );
+
+	add_filter( 'wp_nav_menu_items', 'add_loginout_link', 20, 5 );
+	function add_loginout_link( $items, $args ) {
+		if (is_user_logged_in()  && $args->menu_class == 'responsive-menu') {
+			$items .= '<li  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+						<a href="'. get_option('home') . '/myprofile/">My Profile</a></li>';
+			$items .= '<li  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+						<a href="'. get_option('home') .'/my-posting/">My Posting</a></li>';
+			$items .= '<li  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+						<a href="'. get_option('home') .'/setting-page/">My Settings</a></li>';
+			$items .= '<li  class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+						<a href="'. wp_logout_url() .'">Log Out</a></li>';
+		}
+		elseif(!is_user_logged_in() && $args->menu_class == 'responsive-menu') {
+			$items .= '<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+                       <a href="'. site_url("sign-in") .'">Sign In</a></li>';
+			$items .= '<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1186">
+                       <a href="'. site_url("user-registration") .'">Sign up</a></li>';
+		}
+		return $items;
+	}
+	add_filter( 'category_link', 're_get_category_link', 20, 5 );
+	function re_get_category_link( $link , $id )
+	{
+		return  get_home_url()."/?cat_id=$id";
+	}
+    add_action( 'init', 'create_posttype' );
+function create_posttype() {
+  register_post_type( 'exchange',
+    array(
+      'labels' => array(
+        'name' => __( 'Exchange' ),
+        'singular_name' => __( 'Exchange' )
+      ),
+      'public' => true,
+      'rewrite' => true,
+      'show_ui' => true, // UI in admin panel
+      '_builtin' => false, // It's a custom post type, not built in!
+      '_edit_link' => 'post.php?post=%d',
+      'capability_type' => 'post',
+      'hierarchical' => false,
+      'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',
+      )
+    )
+  );
+}
+?>

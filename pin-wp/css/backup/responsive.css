@@ -1,0 +1,1172 @@
+  /*
+	---------------------------------------------------
+	
+	          Pin - Styles for Mobile Devices
+
+	---------------------------------------------------
+*/
+
+
+/* 1350px (devices and browsers) */
+@media only screen and (min-width: 1260px) and (max-width: 1300px) { 
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+/* - Layout content - */
+.wrap-fullwidth            { width: 1230px; }
+.wrap-fullwidth-bg         { width: 1230px; }
+/* .page-content */
+.single-content            { width: 900px;}
+/* - Boxed Style- */
+#boxed-style   { width: 100%; }
+#boxed-style #background   {/* display: none;*/}
+#boxed-style .wrap-content { padding: 0; margin: 25px 0 40px 300px;}
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 284px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 284px; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+/*Top level menu link items style*/
+.jquerycssmenu, .jquerycssmenu ul li i { font-size: 13px; }
+.jquerycssmenu ul li a     { margin-right: 3px; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list li         { width: 284px; }
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 284px; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/
+/* - Top entry - */
+.single-box                { width: 900px; }
+
+/* -- Entry Banner -- */
+.entry-img-300            { margin: 20px -40px 20px 20px; }
+
+/* -- Responsive Images -- */
+.alignleft                { margin: 20px 20px 10px -40px; }
+.alignright               { margin: 20px -40px 10px 20px; }
+
+}
+
+
+
+
+
+
+
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 1004px) and (max-width: 1230px) {
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+/* - Header - */
+.wrap-center               { width: 980px; }
+/* - Layout content - */
+.wrap-fullwidth            { width: 980px; }
+.wrap-fullwidth-bg         { width: 980px; }
+/* .page-content */
+.single-content            { width: 950px; float: none; margin-left: auto; margin-right: auto;}           
+/* - sidebar - */
+.sidebar                   { width: 950px; float: left; margin-left: 16px; margin-top: 30px;}
+.sidebar .widget           { width: 240px; display: block; float: left; margin-right: 20px;}
+/* - Boxed Style- */
+#boxed-style               { width: 100%; }
+#boxed-style #background   { /*display: none;*/}
+#boxed-style .wrap-content { padding: 0; margin: 25px 0 40px 300px;}
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 300px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 300px; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Top Header Menu -- */
+.jquerycssmenu             { /*padding-top: 24px;*/ font-size: 13px;}
+.jquerycssmenu ul li span  { display: none;}
+.jquerycssmenu ul li ul    { margin-top: 0px;}
+.jquerycssmenu ul li ul li ul { margin:-14px 0 0 -1px; }
+.downarrowclass            { top: 32px;}
+.jquerycssmenu ul li a:hover { opacity: 0.6;}
+
+/* -- Search -- */
+/*header #searchform2        { display: none; }*/
+
+/* -- Sticky Header -- */
+header .stickytop .jquerycssmenu  { margin-top: 8px; padding-top: 0;}
+header .stickytop .jquerycssmenu ul li ul { margin-top: -4px;}
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list li         { width: 300px; }
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv script,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 300px; }
+
+}
+
+
+
+
+
+
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 760px) and (max-width: 1000px) {
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* - Header - */
+.wrap-center               { width: 750px; }
+.bar-header                { display: none;}
+/* - Layout content - */
+.wrap-fullwidth            { width: 750px; }
+.wrap-fullwidth-bg         { width: 750px; }
+.wrap-fullwidth-bg .entry  { width: auto; padding-left: 15px; padding-right: 15px;}
+/* .page-content */
+.wrap-content              { width: 710px; margin: 25px auto 40px auto;}
+.single-content            { width: 750px; float: none; margin-left: auto; margin-right: auto;}           
+/* - sidebar - */
+.sidebar           		   { width: 750px; float: left;  margin-top: 30px; margin-left: 0px;}
+.sidebar .widget           { width: 300px; display: block; float: left; margin-right: 25px;}
+/* - sidebar left - */
+.sidebar-left              { display: none;}
+/* - Boxed Style- */
+#boxed-style               { width: 100%; }
+#boxed-style #background   {/* display: none;*/}
+#boxed-style .wrap-content { width: 710px; padding: 0; margin: 25px auto 40px auto;}
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 218px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 218px; }
+#boxed-style ul.masonry_list li.homeadv img { width: 218px; height: auto; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Search -- */
+header #searchform2        { float: left; margin-left: 150px;}
+header #s                  { width: 170px; }
+header #s:focus            { width: 170px; } 
+
+/* -- Top Header Menu --
+##################### */
+.jquerycssmenu             { display: none;}
+
+/* -- Sticky Header -- */
+header .stickytop          { display: none;} 
+
+/* -- Responsive menu -- */
+/* #click-menu                 { top: 28px !important;} */
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list            { margin-left: -25px;}
+ul.masonry_list li         { width: 218px; }
+ul.masonry_list .small-content { padding: 0 10px 0 10px;}
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv script,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 218px; }
+ul.masonry_list li.homeadv img { width: 218px; height: auto; }
+/* - Meta - */
+.masonry_list .home-meta  { padding: 0 10px; }
+.masonry_list .an-display-view { display: none;}
+ 
+
+/*----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/ 
+/* -- Entry Banner -- */
+.entry-img-300            { margin: 20px 0 20px 20px; }
+
+/* -- Responsive Images -- */
+.alignleft                 { margin-left: 0px;}
+.alignright                { margin-right: 0px;} 
+
+/* - Top entry - */
+.single-box                { width: 750px; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 9 - Footer -------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Copyright -- */
+.copyright                    { width: 750px; }
+}
+
+
+
+
+
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 580px) and (max-width: 760px) {
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+/* - Header - */
+.wrap-center               { width: 570px; }
+.bar-header                { display: none;}
+/* - Layout content - */
+.wrap-fullwidth            { width: 570px; }
+.wrap-fullwidth-bg         { width: 570px; }
+.wrap-fullwidth-bg .entry  { width: auto; padding-left: 15px; padding-right: 15px;}
+/* .page-content */
+.wrap-content              { width: 540px; margin: 25px auto 40px auto; }
+.single-content            { width: 570px; float: none; margin-left: auto; margin-right: auto;}           
+/* - sidebar - */
+.sidebar           		   { width: 570px; float: left;  margin-top: 30px; margin-left: 0px;}
+.sidebar .widget           { width: 240px; padding: 0 15px 20px 15px; display: block; float: left; margin-right: 10px;}
+/* - sidebar left - */
+.sidebar-left              { display: none;}
+/* - Boxed Style - */
+#boxed-style               { width: 100%; }
+#boxed-style #background   {/* display: none;*/}
+#boxed-style .wrap-content { padding: 0; width: 540px; margin: 25px auto 40px auto;}
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 255px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 255px; }
+#boxed-style ul.masonry_list li.homeadv img { width: 255px; height: auto; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Search -- */
+header #searchform2        { float: right; margin-right: 80px;}
+header #s                  { width: 170px; }
+header #s:focus            { width: 170px; } 
+
+/* -- Top Header Menu --
+##################### */
+.jquerycssmenu             { display: none;}
+
+/* -- Sticky Header -- */
+header .stickytop          { display: none;} 
+
+/* -- Responsive menu -- */
+/* #click-menu                { top: 28px !important;}*/
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list            { margin-left: -25px;}
+ul.masonry_list li         { width: 255px; }
+ul.masonry_list .small-content { padding: 0 10px 0 10px;}
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 255px; }
+ul.masonry_list li.homeadv img { width: 255px; height: auto;}
+/* - Meta - */
+.masonry_list .home-meta  { padding: 0 10px; }
+.masonry_list .an-display-view { display: none;}
+
+/*----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Entry Banner -- */
+.entry-img-300            { margin: 20px 0 20px 20px; }
+
+/* -- Bottom banner 728x90 -- */
+.img728, .img728 img, .img728 iframe, .img728 script  { max-width: 98%; height: auto; margin: 10px 0 5px 5px;}
+
+/* -- Responsive Images -- */
+.alignleft                 { margin-left: 0px;}
+.alignright                { margin-right: 0px;} 
+
+/* - Top entry - */
+.single-box                { width: 570px; height: auto; }
+.single-box .single-money  { width: 100%; height: auto; margin: 15px auto 10px auto;}
+.single-box .single-money img, .single-box .single-money iframe, .single-box .single-money script { width: 98%; height: auto; margin: 10px 0 5px 5px;}
+.single-content .single-meta  { width: 550px; }
+.entry-top                 { width: 550px;}
+.single-gallery            { width: 550px;}
+iframe.single_iframe       { width: 100%;}
+
+/* -- Related articles -- */
+.related-box               { width: 540px; height: auto; margin: -5px auto 50px auto;}
+
+/* -- About Author -- */
+.author-meta               { width: 540px; padding-bottom: 30px;}
+
+/* -- Entry content style -- */
+.entry                     { width: 540px; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 5 - Sidebar & Widgets ---------------------------
+-----------------------------------------------------------------------------*/
+/* -- Banner widget 300px -- */
+.widget .img-300           { width: 250px; height: auto; margin:0; }
+.widget .img-300 img, .widget .img-300 iframe, .widget .img-300 script { width: 250px; }
+.widget .img-300 img { height: auto; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 6 - Comments Form -------------------------------
+-----------------------------------------------------------------------------*/
+ul.comment                  { width: 540px; }
+.comments                   { width: 540px; }
+/* -- Entry bottom -- */
+.entry-bottom               { width: 540px; height: auto; margin: 20px 0 10px 15px;}
+
+/*-----------------------------------------------------------------------------
+----------------------------- 7 - Contact Form --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Contact Form -- */
+#contactform #contactName, #contactform #emaill, #contactform #subject { width:96%; }	
+#contactform #subject         { width: 98%;}
+#contactform textarea         { width: 98%; } 
+
+/*-----------------------------------------------------------------------------
+----------------------------- 8 - Custom Pages --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Tag & Category Index -- */
+#mcTagMap .holdleft, #sc_mcTagMap .holdleft { width: 160px !important; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 9 - Footer -------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Copyright -- */
+.copyright                    { width: 570px; }
+
+/* -- Footer Social Icons -- */
+ul.footer-social li           { margin: 27px 5px 0 5px; }
+ul.footer-social li a         { text-align: center; padding: 5px 5px; } 
+}
+
+
+
+
+
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 580px) {
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+/* - Header - *//*.main-header               { width: 460px; }*/.main-header                               { width:100%; }
+.wrap-center               { width: 460px; }
+.bar-header                { display: none;}
+/* - Layout content - */
+.wrap-fullwidth            { width: 460px; }
+.wrap-fullwidth-bg         { width: 460px; }
+.wrap-fullwidth-bg .entry  { width: auto; padding-left: 15px; padding-right: 15px;}
+/* .page-content */
+.wrap-content              { width: 415px; margin: 25px auto 40px auto; }
+.single-content            { width: 460px; float: none; margin-left: auto; margin-right: auto;}           
+/* - sidebar - */
+.sidebar           		   { width: 460px; float: left;  margin-top: 30px; margin-left: 0px;}
+.sidebar .widget           { width: 180px; display: block; float: left; margin-right: 0px;}
+/* - sidebar left - */
+.sidebar-left              { display: none; }
+/* - Boxed Style- */
+#boxed-style               { width: 100%; }
+#boxed-style #background   {/* display: none;*/}
+#boxed-style .wrap-content { padding: 0; margin: 25px auto 40px auto; }
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 195px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 195px; }
+#boxed-style ul.masonry_list li.homeadv img { width: 195px; height: auto;}
+
+
+    .author-display-time-single {
+        left: 41%;
+        position: relative;
+    }
+    .author-display-name-single {
+        font-size: 16px;
+        left: 48%;
+        margin-top: 20%;
+        position: relative;
+    }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+ 
+/* -- Search -- */
+header #searchform2        { display: none;} 
+
+/* -- Top Header Menu --
+##################### */
+.jquerycssmenu             { display: none;}
+
+/* -- Sticky Header -- */
+header .stickytop          { display: none;} 
+
+/* -- Responsive menu -- */
+/* #click-menu { top: 28px !important;}*/
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list            { margin-left: -25px;}
+ul.masonry_list li         { width: 195px; }
+ul.masonry_list .small-content { padding: 0 10px 0 10px;}
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv script,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 195px; }
+ul.masonry_list li.homeadv img { width: 195px; height: auto; }
+/* - Meta - */
+.masonry_list .home-meta  { padding: 0 10px; }
+.masonry_list .an-display-view { display: none;}
+/* - Like & unlike - */
+.masonry_list .home-data .thumbs-rating-container .thumbs-rating-up, 
+.masonry_list .home-data .thumbs-rating-container .thumbs-rating-down { font-size: 11px; padding: 0 0 0 5px; } 
+/* - Meta - */
+.masonry_list .an-display-time { padding: 5px 0 0 0; }
+ 
+
+/*----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/ 
+/* -- Entry Banner -- */
+.entry-img-300            { margin: 20px 0 20px 20px; }
+.entry-img-300, .entry-img-300 img, .entry-img-300 iframe, .entry-img-300 script  { width: 200px; }
+.entry-img-300 img { height: auto;}
+
+/* -- Bottom banner 728x90 -- */
+.img728, .img728 img, .img728 iframe, .img728 script  { max-width: 98%; height: auto; margin: 10px 0 5px 5px;}
+
+/* -- Responsive Images -- */
+.alignleft                 { margin-left: 0px;}
+.alignright                { margin-right: 0px;} 
+
+/* - Top entry - */
+.single-box                { width: 460px; height: auto; }
+.single-box .single-money  { width: 100%; height: auto; margin: 15px auto 10px auto;}
+.single-box .single-money img, .single-box .single-money iframe, .single-box .single-money script { max-width: 98%; height: auto; margin: 10px 0 5px 5px;}
+.single-content .single-meta  { width: 430px; }
+/*.entry-top                 { width: 430px;}*/
+.single-gallery            { width: 430px;}
+iframe.single_iframe       { width: 100%;}
+.single-gallery img        { width: 143px; height: 143px;}
+
+/* -- Related articles -- */
+.related-box               { width: 430px; height: auto; margin: -5px auto 50px auto;}
+
+/* -- About Author -- */
+.author-meta               { width: 430px; padding-bottom: 30px;}
+
+/* -- Entry content style -- */
+.entry                     { width: 430px; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 5 - Sidebar & Widgets ---------------------------
+-----------------------------------------------------------------------------*/
+/* -- Banner widget 300px -- */
+.widget .img-300           { width: 200px; height: auto; margin:0; }
+.widget .img-300 img, .widget .img-300 iframe, .widget .img-300 script { width: 200px; }
+.widget .img-300 img { height: auto; }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 6 - Comments Form -------------------------------
+-----------------------------------------------------------------------------*/
+ul.comment                  { width: 430px; }
+.comments                   { width: 430px; }
+/* -- Entry bottom -- */
+.entry-bottom               { width: 430px; height: auto; margin: 20px 0 10px 15px;}
+
+/*-----------------------------------------------------------------------------
+----------------------------- 7 - Contact Form --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Contact Form -- */
+#contactform #contactName, #contactform #emaill, #contactform #subject { width:96%; }	
+#contactform #subject         { width: 98%;}
+#contactform textarea         { width: 98%; } 
+
+/*-----------------------------------------------------------------------------
+----------------------------- 8 - Custom Pages --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Tag & Category Index -- */
+#mcTagMap .holdleft, #sc_mcTagMap .holdleft { width: 195px !important; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 9 - Footer -------------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Copyright -- */
+.copyright                    { width: 460px; }
+/* -- Footer Social Icons -- */
+ul.footer-social li           { margin: 27px 5px 0 5px; }
+ul.footer-social li a         { text-align: center; padding: 5px 4px; } 
+}
+
+
+
+
+
+
+
+
+
+/* All Mobile Size (devices) */
+@media only screen and (max-width: 479px) { 
+/*-----------------------------------------------------------------------------
+----------------------------- 1 - Layout --------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* - Header - */
+.wrap-center               { width: 305px; }
+.bar-header                { display: none;}
+/* - Layout content - */
+.wrap-fullwidth            { width: 305px; }
+.wrap-fullwidth-bg         { width: 305px; }
+.wrap-fullwidth-bg .entry  { width: auto; padding-left: 15px; padding-right: 15px;}
+/* .page-content */
+.wrap-content              { width: 305px; margin: 25px auto 40px auto; }
+.single-content            { width: 305px; float: none; margin-left: auto; margin-right: auto;}           
+/* - sidebar - */
+.sidebar           		   { width: 300px; float: left;  margin-top: 30px; margin-left: 0px;}
+.sidebar .widget           { width: 250px; display: block; float: left; margin-right: 0px;}
+/* - sidebar left - */
+.sidebar-left              { display: none;}
+/* - Boxed Style- */
+#boxed-style               { width: 100%; }
+#boxed-style #background   { /*display: none;*/}
+#boxed-style .wrap-content { padding: 0; margin: 25px auto 40px auto;}
+#boxed-style .wrap-fullwidth { padding: 0;  margin: 30px auto; }
+#boxed-style .wrap-fullwidth-bg { margin: 40px auto; padding: 10px 0px 30px 0; }
+#boxed-style .stickytop.sticky-on { width: 100%; }
+#boxed-style .wrap-content, 
+#boxed-style .wrap-fullwidth { background-color: transparent;}    
+/* - Blog Masonry style in boxed mode - */
+#boxed-style ul.masonry_list li         { width: 305px; }
+/* - Home ADS in boxed mode -*/
+#boxed-style ul.masonry_list li.homeadv,
+#boxed-style ul.masonry_list li.homeadv iframe,
+#boxed-style ul.masonry_list li.homeadv embed,
+#boxed-style ul.masonry_list li.homeadv object,
+#boxed-style ul.masonry_list li.homeadv img { width: 300px; }
+#boxed-style ul.masonry_list li.homeadv img { width: 300px; height: 250px; }
+
+    .author-display-time-single {
+        left: 41%;
+        position: relative;
+    }
+    .author-display-name-single {
+        font-size: 16px;
+        left: 48%;
+       margin-top: 20%;
+        position: relative;
+    }
+
+/*-----------------------------------------------------------------------------
+----------------------------- 2 - Header --------------------------------------
+-----------------------------------------------------------------------------*/
+
+/* -- Search -- */
+header #searchform2        { display: none;} 
+
+/* -- Top Header Menu --
+##################### */
+.jquerycssmenu             {display:none; font-size:10px !important;line-height:1;position:relative;top:-46px;left:52px;/* display: none;*/}
+
+/* -- Sticky Header -- */
+header .stickytop          { display: none;} 
+
+/* -- Responsive menu -- */
+/* #click-menu                { top: 28px !important;}*/
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 3 - Home Content --------------------------------
+-----------------------------------------------------------------------------*/
+/* ##### Featured Slider home ##### 
+################################## */
+.featured-title            { /*display: none;*/}
+.featured-title h3         { display: none; }
+.slide-nav                 { float: left; margin-top: 60px; margin-left: -5px; }
+
+/* ###### Blog Masonry style ###### 
+#################################### */
+ul.masonry_list li         { width: 305px;  margin: 0 0 25px 0;}
+ul.masonry_list .small-content { padding: 0 10px 0 10px;}
+/* - Home ADS -*/
+ul.masonry_list li.homeadv,
+ul.masonry_list li.homeadv script,
+ul.masonry_list li.homeadv iframe,
+ul.masonry_list li.homeadv embed,
+ul.masonry_list li.homeadv object,
+ul.masonry_list li.homeadv img { width: 300px; }
+ul.masonry_list li.homeadv img { width: 300px; height: 250px; }
+
+/* - Meta - */
+.masonry_list .home-meta  { padding: 0 10px; }
+.masonry_list .an-display-view { margin-left:10px;/*display: none;*/}
+/* - Like & unlike - */
+.masonry_list .home-data .thumbs-rating-container .thumbs-rating-up, 
+.masonry_list .home-data .thumbs-rating-container .thumbs-rating-down { font-size: 11px; padding: 0 0 0 5px; } 
+/* - Meta - */
+.masonry_list .an-display-time { padding: 5px 0 0 0; }
+
+/*----------------------------------------------------------------------------
+----------------------------- 4 - Entry Content -------------------------------
+-----------------------------------------------------------------------------*/ 
+
+/* -- Entry Banner -- */
+.entry-img-300            { margin: 20px 0 20px 0; float: left; }
+.entry-img-300, .entry-img-300 img, .entry-img-300 iframe, .entry-img-300 script  { width: 280px;}
+.entry-img-300 img { height: auto;}
+
+/* -- Bottom banner 728x90 -- */
+.img728, .img728 img, .img728 iframe, .img728 script  { max-width: 97%; height: auto; margin: 10px 0 5px 5px;}
+
+/* -- Responsive Images -- */
+.alignleft                 { margin-left: 0px;}
+.alignright                { margin-right: 0px;} 
+h1.article-title           { font-size: 26px; font-weight: 600; line-height: 34px; }
+.entry h1.page-title       { font-size: 26px; }
+
+/* - Top entry - */
+.single-box                { width: 305px; height: auto; }
+.single-box .single-money  { width: 100%; height: auto; margin: 15px auto 10px auto;}
+.single-box .single-money img, .single-box .single-money iframe, .single-box .single-money script { max-width: 97%; height: auto; margin: 10px 0 5px 5px;}
+.single-content .single-meta  { width: 290px; }
+.single-content .single-meta .single-data { float: left; margin: 20px 0 -20px 100px; }
+/*.entry-top                 { width: 290px;}*/
+.single-gallery            { width: 290px;}
+iframe.single_iframe       { width: 100%;}
+.single-gallery img        { width: 145px; height: 145px;}
+
+/* -- Related articles -- */
+.related-box               { width: 290px; height: auto; margin: -5px auto 50px auto;}
+
+/* -- Entry content style -- */
+.entry                     { width: 280px; }
+
+/* -- About author -- */
+.author-meta               { width: 94%;  } 
+.author-meta .author-link  { display: none;}
+
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 6 - Comments Form -------------------------------
+-----------------------------------------------------------------------------*/
+ul.comment                  { width: 285px; }
+.comments                   { width: 285px; }
+/* -- Entry bottom -- */
+.entry-bottom               { width: 285px; height: auto; margin: 20px 0 10px 10px;}
+
+/*-----------------------------------------------------------------------------
+----------------------------- 7 - Contact Form --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Contact Form -- */
+#contactform #contactName, #contactform #emaill, #contactform #subject { width:94%; }	
+#contactform #subject         { width: 97%;}
+#contactform textarea         { width: 97%; } 
+
+/*-----------------------------------------------------------------------------
+----------------------------- 8 - Custom Pages --------------------------------
+-----------------------------------------------------------------------------*/
+/* -- Tag & Category Index -- */
+#mcTagMap .holdleft, #sc_mcTagMap .holdleft { width: 280px !important; }
+
+
+/*-----------------------------------------------------------------------------
+----------------------------- 10 - Footer -------------------------------------
+-----------------------------------------------------------------------------*/
+.social-section               { height: auto;}
+/* -- Copyright -- */
+.copyright                    { width: 305px;}
+/* -- Footer Social Icons -- */
+ul.footer-social li           { margin: 15px 5px 0 5px; }
+ul.footer-social li a         { text-align: center; padding: 5px 4px; } 
+
+/* -- Columns -- */
+.one_half, .one_half_last         { float:left;width:100%; margin-bottom:10px; margin-right:0; }
+.one_half_last                    { margin-right:0;}
+
+.one_third, .one_third_last       { float:left; width:100%; margin-bottom:10px; margin-right:0; }
+.one_third_last                   { margin-right:0;}
+
+.one_fourth, .one_fourth_last     { float:left; width:100%; margin-bottom:10px; margin-right:0; }
+.one_fourth_last                  { margin-right:0;}
+}
+
+/* STYLES GO HERE IPHONE6*/
+@media only screen and (min-device-width : 375px) and (max-device-width : 568px) {
+/* STYLES GO HERE */
+
+.author-display-name-single {width: 45% margin-bottom: 8px;font-size:20px;left: 32%;margin-top:0 !important;position: relative;}
+.author-display-time-single {margin-top:10px;width:40%;left: 30%;font-size:14px;line-height:13px;position: relative;}
+.the_source img {margin-left: 67%;}
+.author-image-single > .avatar.avatar-32 {height: 60px;width: 60px;}
+h1.article-title {font-size: 16px;font-weight: 400;line-height: 24px;text-align: left;}
+.comm-avatar {height: 90px;width: 90px;}
+.prfl-avtar-img {background-color: #ffffff;border-radius: 100%;height: 90px;margin-top: 76px;padding: 1px;width: 90px;}
+.avatar-name-prfl {    margin-left: -22px;margin-top: 8px;}
+.avatar-name-prfl-content {font-size: 21px;}
+.avatar-tag-line {font-size: 16px;margin-left: -21px;}
+.upload-bg-cover-text {font-size: 13px; margin-right: 88px !important;margin-top: 17px;}
+.fa-angle-down-shifter {color:#5587c2;margin-left: -250px;margin-top: -10px; position: absolute;right: 18%;top:3%;z-index: 1000;}
+.fa-angle-up-shifter {left: 144%;margin-top: -75px;position: absolute;z-index: 3;}
+.sign-box1 {height: auto;margin-left: 10%;width: 81%;}
+.prfl-box{background-size: 100% 85%;background-repeat: no-repeat;}
+#setting_email .setting_main .label_right {float: left; margin: 0 0 0 1%;width: 52%;}
+.avatar.avatar-130 {height: 90px;width: 90px;}
+.trig-function-php {left: 3px;position: relative;top: -30px;z-index: 3;}
+div.mce-toolbar-grp > div {padding: 3px;width: 51%;}
+.post-block-custom {margin-left: 10%;width: 73%;}
+ul.article_list .an-widget-title h4 {font-size: 12px;line-height: 18px;margin-left: -4px;}
+.related-box .one_half, .related-box .one_half_last {float: left;margin-right: 6%;width: 100%;}
+#form_des89 .bt_desc56 label.control-label{
+	width:43%;
+	float:left;
+}
+#form_des89 .bt_desc56 .user_img{
+	width:44%;
+}
+#imagesholder .prfl-avtar-img:hover .avatar {
+    display: block;
+    height: 50%;
+    margin: 0 auto;
+    width: 50%;
+}
+
+#form_des89 .form_des89_left label {
+  clear: both;
+  display: block;
+  float: none;
+  width: 36%;
+}
+#form_des89 .form_des89_left .form-group .label5{
+	display:none;
+}
+#form_des89 .form_des89_right label {
+  width: 29%;
+}
+#form_des89 .form_des89_left input{
+	width:98%;
+}
+#form_des89 .form_des89_left .state{
+	width:98%;
+}
+ #form_des89 .form_des89_right input, #form_des89 .form_des89_right textarea{
+ 	width:98%;
+}
+#form_des89 .form_des89_left .birth {
+  width: 55%;
+}
+#form_des89 .form_des89_left .month5 {
+  width: 20%;
+}
+#form_des89 .form_des89_left .year5 {
+  width: 20%;
+}
+#form_des89 .right_fm_dec {
+  width: 100%;
+}
+#form_des89 .bt_desc56 label.control-label{
+	display:none;
+}
+#form_des89 .bt_desc56 .user_img1 {
+  float: none;
+  margin: 8% auto 0;
+  width: 74%;
+}
+#setting_email .setting_main .label_right {
+  float: left;
+  margin: 0 0 0 1%;
+  width: 98%;
+}
+#setting_email .setting_main label {
+  text-align: left;
+}
+#tabs-2 .setting_email_btn .user_img1 {
+  float: none;
+  margin: 0 0 0 18%;
+  width: 59%;
+}
+.setting_email_btn {
+  margin-top: 4%;
+  width: 100%;
+}
+.form input[type="text"], .form input[type="url"], .form input[type="password"], .form input[type="number"], .form input[type="email"], textarea, select {
+    width: 100%;
+}
+   #add-product .form input[type="text"], .form input[type="url"], .form input[type="password"], .form input[type="number"], .form input[type="email"], textarea, select {
+        width: 237px;
+    }
+   .a-group .ic-drop .form select {
+        width: 100%;
+    }
+    .ic-drop > select {
+        width: 237px;
+    }
+
+
+
+    .FOLLOWUP{
+        margin-left:-1px;
+    }
+
+
+    .hd56 {
+        position: relative;
+        top: 30px;
+    }
+
+    .FAIL{margin-left:-1px;}
+
+    .INTRESTING{margin-left:-1px;}
+
+    .OBVIOUS{margin-left:-1px;}
+    .campaign-stats{padding: 20px 20px 10px 11px;}
+    .campaign-stats > ul > li{margin-left: -20px;}
+
+    .prfl-box > img {left: 16%;position: absolute;top: 13%;z-index: 3;}
+    .form input[type="text"], .form input[type="url"], .form input[type="password"], .form input[type="number"], .form input[type="email"], textarea, select{
+        width: 100%;
+        background: #ffffff none repeat scroll 0 0;
+        border: 1px solid #dadada;
+        border-radius: 2px;
+        color: #333333;
+        height: 30px;
+        padding: 0 5px;}
+
+    .responsive-section-add-campaign{
+        margin-top: 5%;
+    }
+    .responsive-cont-add-campaign{
+        margin-top: 9%;
+    }
+
+    .multiple-trig-function-php > button {
+        --redwhite: #fbc7bd;
+        background:  var(--col);
+        border-color: transparent;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        height: 18px;
+        position: relative;
+        top: 0 !important;
+    }
+    .fa.fa-chevron-right {
+        left: 5px;
+        position: relative;
+        top: -23px;
+    }
+    .fa.fa-chevron-left {
+        margin-left: -17px;
+        margin-top: 17px;
+        position: relative;
+        top: -22px;
+    }
+    .posting-image {
+        margin-left: 23%;
+        margin-top: -7%;
+        max-width: 24px;
+    }
+
+   .arrow-logo-img {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  float: right;
+  height: auto;
+  margin-top: -6px;
+  position: absolute;
+  right: 2%;
+  top: 23%;
+  width: 6%;
+  z-index: 101;
+}
+    .popups-image {
+        height: 100%;
+        position: relative;
+        width: 100%;
+    }
+    .popups > div {
+        position: relative;
+        z-index: 1;
+    }
+    .popups {
+        border: 0.1px solid;
+        display: none;
+        height: 30%;
+        left:34%;
+        position: absolute;
+        top: 31.5%;
+        width: 64%;
+        z-index: 101;
+    }
+    .arrow-up {
+        border-color: transparent transparent #ffffff;
+        border-style: inset;
+        border-width: 0 7px 15.2px;
+        float: right;
+        height: 0;
+        position: relative;
+        right: 8.5%;
+        text-align: right;
+        top: -14px;
+        transform: rotate(360deg);
+        width: 0;
+        z-index: 101;
+    }
+
+  }
+
+/*  @media only screen and (max-width: 320px) {
+
+      .arrow-logo-img {
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          cursor: pointer;
+          float: right;
+          height: 12%;
+          margin-top: -41px;
+          position: relative;
+          right: 2%;
+          width: 6%;
+          z-index: 101;
+      }
+      .popups {
+          background-color: white;
+          display: none;
+          height: 200px;
+          left: 33.7%;
+          position: fixed;
+          top: 45.9%;
+          width: 200px;
+          z-index: 101;
+      }
+
+      .popups-image {
+          height: 200px;
+          width: 200px;
+      }
+
+      .arrow-up {
+          border-color: transparent transparent #ffffff;
+          border-style: inset;
+          border-width: 0 5px 7.2px;
+          float: right;
+          height: 0;
+          position: relative;
+          right: 6.5%;
+          text-align: right;
+          top: -7px;
+          transform: rotate(360deg);
+          width: 0;
+          z-index: 101;
+      }
+  }*/
+
+  @media only screen and (max-width: 320px) and (orientation:portrait) {
+      .arrow-logo-img {
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          cursor: pointer;
+          float: right;
+          height: 10%;
+          margin-top: -40px;
+          position: relative;
+          right: 2%;
+          top: 57%;
+          width: 6%;
+          z-index: 101;
+      }
+      .popups {
+          background-color: white;
+          display: none;
+          height: 50%;
+          left: 33.7%;
+          position: absolute;
+          top: 45.9%;
+          width: 63%;
+          z-index: 101;
+      }
+
+      .popups-image {
+          height: 100%;
+          width: 100%;
+      }
+
+      .arrow-up {
+          border-color: transparent transparent #ffffff;
+          border-style: inset;
+          border-width: 0 5px 7.2px;
+          float: right;
+          height: 0;
+          position: relative;
+          right: 6.5%;
+          text-align: right;
+          top: -7px;
+          transform: rotate(360deg);
+          width: 0;
+          z-index: 101;
+      }
+  }
+
+
+  @media only screen and (max-width: 480px) and (orientation:landscape) {
+
+      .arrow-logo-img {
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          cursor: pointer;
+          float: right;
+          height: 6%;
+          margin-top: -6px;
+          position: absolute;
+          right: 2%;
+          top: 62%;
+          width: 6%;
+          z-index: 101;
+      }
+      .popups {
+          background-color: white;
+          display: none;
+          height: 50%;
+          left: 55.7%;
+          position: absolute;
+          top: 68.9%;
+          width: 41%;
+          z-index: 101;
+      }
+
+      .popups-image {
+          height: 100%;
+          width: 100%;
+      }
+
+      .arrow-up {
+          border-color: transparent transparent #ffffff;
+          border-style: inset;
+          border-width: 0 5px 7.2px;
+          float: right;
+          height: 0;
+          position: relative;
+          right: 6.5%;
+          text-align: right;
+          top: -7px;
+          transform: rotate(360deg);
+          width: 0;
+          z-index: 101;
+      }
+  }
+
+@media(min-width:375px) and (max-width:380px){
+ .fa.fa-chevron-left {
+  margin-left: -6px;
+}
+ .fa.fa-chevron-right {
+  left: -1px;
+  position: relative;
+  top: -45px;
+}
+.fa.fa-chevron-left {
+  margin-left: -6px;
+  right: 9px;
+}
+
+}
+@media(max-width:480px){
+
+	    .fa.fa-chevron-left {
+  margin-left: 0;
+  margin-top: 0;
+  position: relative;
+  top: 0;
+}
+.fa.fa-chevron-right {
+  left: 0;
+  position: relative;
+  top: 0;
+}
+}
+

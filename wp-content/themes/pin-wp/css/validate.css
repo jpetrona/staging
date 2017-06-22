@@ -1,0 +1,26 @@
+/*#field{margin-left:.5em;}
+br{clear:both;}
+input{border:1px solid black;margin-bottom:.5em;}
+input.error{border:1px solid red;}
+label.error{background:url('../images/unchecked.gif') no-repeat;padding-left:16px;margin-left:.3em;}
+label.valid{background:url('../images/checked.gif') no-repeat;display:block;width:16px;height:16px;}*/
+
+
+#field{margin-left:.5em;}
+br{clear:both;}
+input{border:1px solid black;/*margin-bottom:.5em;*/}
+input.error{border:1px solid red;}
+label.error{background:url('../images/unchecked.gif') no-repeat;padding-left:16px;margin-left:.3em;}
+label.valid {
+  background: rgba(0, 0, 0, 0) url("../images/checked.gif") no-repeat scroll right center;
+  display: block;
+  float: right;
+  height: 16px;
+  position: relative;
+  right: 22px;
+  top: -43px;
+  width: 16px;
+}
+#register_form .col-md-6{
+    position:relative;
+}

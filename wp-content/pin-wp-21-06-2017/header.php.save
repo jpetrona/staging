@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html <?php language_attributes(); ?>>
+<head>
+
+<?php
+global $wpdb;
+global $usernm;
+?>
+<meta name="google-site-verification" content="eaaIKog7C20lQ65dlFEzbC7HWph45TAM0jrRJgq8gh8" />
+<?php
+    $hosturl = explode('/',$_SERVER['REQUEST_URI']);
+    $usernm = $hosturl[1];
+    $user_data_arr = $wpdb->get_row($wpdb->prepare("SELECT ID, user_login,display_name FROM $wpdb->users WHERE user_login = %s ", $usernm));
+    $user_id_val = $user_data_arr->ID;
+
+if(strpos($_SERVER['HTTP_USER_AGENT'],'Firefox')!=false){
+    define("BROWSER","firfox");
+}else if(strpos($_SERVER['HTTP_USER_AGENT'],'Chrome')!=false){
+    define("BROWSER","chrome");
+}else if(strpos($_SERVER['HTTP_USER_AGENT'],'Safari')!=false){
+    define("BROWSER","safari");
+}else{
+    define("BROWSER","ie");
+}
+
+?>
+
+    <?php
+    // Options from admin panel
+    global $smof_data;
+    
+    $favicon = $smof_data['custom_favicon'];
+    if (empty($favicon)) { $favicon = get_template_directory_uri().'/images/web-icon.png'; }
+    
+    $site_logo = $smof_data['site_logo'];
+    if (empty($site_logo)) { $site_logo = get_template_directory_uri().'/images/logo.png'; }
+
+    if (empty($smof_data['featured-posts'])) { $smof_data['featured-posts'] = '12'; }
+    $boxed_version_select = (isset($smof_data['boxed_version_select'])) ? $smof_data['boxed_version_select'] : 'No';
+    ?>
+    <!-- Meta Tags 42-->
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+
+    <!-- Title -->
+    <?php if($user_id_val>0){
+        echo "<title>".$user_data_arr->display_name." | Retirely</title>";
+    }else if ( ! function_exists( '_wp_render_title_tag' ) ) { function theme_slug_render_title() { ?>
+    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <?php } add_action( 'wp_head', 'theme_slug_render_title' ); } // Backwards compatibility for older versions. ?> 
+
+    <!-- Mobile Device Meta -->
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui' /> 
+    
+    <!-- The HTML5 Shim for older browsers (mostly older versions of IE). -->
+    <!--[if IE]> <script src="<?php echo esc_url(get_template_directory_uri()); ?>/js/html5.js"></script> <![endif]-->
+
+    <!-- Favicons and rss / pingback -->
+    <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php esc_url(bloginfo('rss2_url')); ?>" />
+    <link rel="pingback" href="<?php esc_url(bloginfo('pingback_url')); ?>" />
+    <link rel="shortcut icon" type="image/png" href="<?php echo esc_url($favicon); ?>"/>  
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    
+	<link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri()); ?>/css/font-awesome.min.css">	
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="<?php echo plugins_url();?>/tab/css/default.css?ver=4.1.5"> 
+
+    <!-- Custom style -->
+    <?php echo get_template_part('custom-style'); ?>
+
+    <!-- Theme output -->
+    <?php wp_head(); ?> 
+</head>
+<body <?php if ($boxed_version_select == 'Yes') { ?>id="boxed-style" <?php body_class(); ?>>
+    <?php if (!empty($smof_data['background_img'])) {
+    if(is_single()){ ?> 
+    <img id="background" style="z-index:-1;" src="<?php echo esc_url($smof_data['background_img']); ?>" alt="background img" />
+    <?php }else{ ?>    
+    <img id="background" src="<?php echo esc_url($smof_data['background_img']); ?>" alt="background img" />
+    <?php } ?>
+    <?php }} else { ?> <?php body_class(); ?>> <?php } // background image ?>
+
+
+
+	<?php if(BROWSER == "chrome") {?>
+	<style>
+		.tag-format{
+			background-color: rgba(255, 219, 212, 0.4);
+		}
+	#instrument-auther-list{
+	width:231px;
+	}
+ .im-imagebox  img{
+//        max-width:70px;
+    }
+	</style>
+	<?php } ?>
+<?php if(BROWSER == "safari") {?>
+<style>
+.profile-block-right{
+    width: 84% !important;
+}
+.main-header { 
+  height: 40px;
+}
+
+.cat{
+    position: absolute !important;
+}
+
+ .tab-span > .avatar.avatar-32 {
+     margin-top:4%;
+ }
+
+.sbHolder {
+display: inline-block;
+margin-left: 102px !important;
+margin-top: -10px;
+}
+.sbHolder {
+	
+	left: 0px;
+	top: 0px;
+	
+}
+.addonhome {
+width: 66%;
+}
+	   .tag-format{
+    background-color: rgba(255, 219, 212, 0.4);
+    }
+.template-cat {
+    margin-bottom: 1.5%;
+    margin-top: 1%;
+}
+/*.addonhome {
+    float: right;
+    margin-right: 23px;
+    margin-top: -50px !important;
+    width: 62%;
+}
+    .im-imagebox  img{
+        max-width:70px;
+    }*/
+</style> 
+<?php } ?>
+    <!-- Begin Header -->
+    <header> 
+        <div class="main-header">
+            <div class="sticky-on">
+                <?php //$dt = date(); ?>
+                <a href="<?php echo esc_url(home_url( '/' )); ?>?auth=true&d=<?php echo microtime(); ?>"><img class="logo" src="<?php echo esc_url(($site_logo)); ?>" alt="<?php bloginfo('sitename'); ?>" /></a>
+
+                <!-- Navigation Menu -->
+                <nav id="myjquerymenu" class="jquerycssmenu">
+                    <?php  wp_nav_menu( array( 'container' => false, 'items_wrap' => '<ul>%3$s</ul>', 'theme_location' =>   'primary-menu' ) ); ?>
+                    <div class="header-SignInButton" <?php if(!is_user_logged_in()){?>style="margin-top:10px;" <?php } ?>>
+                             <?php echo do_shortcode("[SignInButton]"); ?>
+                    </div>
+                    <div class="socila-butn">
+                        <ul>
+						  <li><span class="go-mb-text">Go mobile</span></li>
+                          <li><a href="https://play.google.com/store/apps/details?id=com.Intlfaces.retire.ly"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/google-btn.png" class="img-responsive social-img-icon"></a></li>
+                          <li><a href="https://itunes.apple.com/us/app/retirely/id713998164?ls=1&mt=8"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/appstore.png" class="img-responsive social-img-icon"></a></li>
+                          
+                     </ul>
+                 </div>
+                 
+             </nav><!-- end #myjquerymenu -->
+             <!-- search form get_search_form(); -->
+             <?php get_search_form(); ?>
+         </div>
+         <div class="clear"></div>
+     </div><!-- end .main-header -->
+    <div id="notificationContainer">
+    <div id="notificationTitle"><h5 style="float:left;margin-left:60px;margin-top:5px">NOTIFICATIONS</h5><img src="<?php site_url();?>/wp-content/themes/pin-wp/images/close.png"></div>
+    <div id="notificationsBody" class="notifications"></div>
+    <div id="notificationFooter"><a href="#"></a></div>
+    </div>
+     <div class="bar-header" style="padding-top:0px;visibility:hidden;">
+    <?php 
+     if(  !is_user_logged_in()  )
+     {
+        ?>
+     
+        <div class="wrap-center">
+            <!-- Navigation Menu Categories -->
+            <div class="menu-categories">
+                <nav id="myjquerymenu-cat" class="jquerycssmenu">
+                    <?php  wp_nav_menu( array( 'container' => false, 'items_wrap' => '<ul>%3$s</ul>', 'theme_location' =>   'secondary-menu' ) ); ?>
+                </nav></div><!-- end .menu-categories -->
+            </div>
+       
+        <?php }else if(is_home()){ ?>
+        <div class="wrap-center">
+            <!-- Navigation Menu Categories -->
+            <div class="menu-categories">
+                <nav id="myjquerymenu-cat" class="jquerycssmenu">
+                    <?php  wp_nav_menu( array( 'container' => false, 'items_wrap' => '<ul>%3$s</ul>', 'theme_location' =>   'secondary-menu' ) ); ?>
+                </nav></div><!-- end .menu-categories -->
+            </div>
+        <?php } ?>
+        </div>
+    </header><!-- end #header -->
+
+
+    <?php //if ( term_exists( 'featured', 'post_tag' ) ) { ?>
+    <?php if( is_front_page() ) { ?>
+    <!-- Begin Featured articles on slide -->
+    <div class="featured-articles">
+
+        <div class="featured-title">
+            <h3><?php esc_html_e('Featured Articles', 'anthemes'); ?></h3>
+            <div class="slide-nav">
+              <span id="slider-prev"></span>
+              <span id="slider-next"></span>
+          </div><!-- end .slide-nav -->          
+      </div><!-- end .featured-title -->   
+   
+
+    <?php $tag = get_term_by('slug', 'rssfeed', 'post_tag');
+    $tag_id_rss =  $tag->term_id;
+    $tag_id_rss = (isset($tag->term_id) && $tag->term_id != '') ? $tag->term_id : '' ;
+    $tag = get_term_by('slug', 'featured', 'post_tag');
+    $tag_id_featured =  $tag->term_id;
+    $tag_id_featured = (isset($tag_id_featured) && $tag_id_featured != '') ? $tag_id_featured : '' ;?>
+ <!-- start front end graph scripts -->
+    <?php 
+    $frondendgraph_table = $wpdb->prefix."frondendgraph";
+    $context_table = $wpdb->prefix."context";
+    $querystr = "select * from  ".$frondendgraph_table." where status=1 order by id Desc";
+    $querystrcontext = "select * from  ".$context_table;
+//    $res=$wpdb->query('TRUNCATE TABLE `a1_frondendgraph` ');    
+    $allcontext = $wpdb->get_results($querystrcontext, OBJECT);
+    $context = array();
+    foreach($allcontext as $key => $value ){
+        $context[$value->contextname] = $value->contextimg;
+    }
+   // print_r($context['AMUSING']);
+   // die;
+    $allrecords = $wpdb->get_results($querystr, OBJECT);?>
+   
+    <!-- echo front end graph scripts-->
+    <ul class="featured-articles-slider">
+    <?php  foreach($allrecords  as $key => $value ){ ?>
+    <?php echo $getcontext = $value->context; ?>
+        <li>
+         <div class="article-category">
+          <i></i>
+          <a href="<?php echo get_category_link( $value->category ); ?>">
+             <?php  echo get_cat_name( $value->category ) ;?>
+           </a>
+         </div>
+         <?php $size = array(300,165);  
+         $image_attributes = wp_get_attachment_image_src(  $value->image , $size);
+        ?>
+        <img class="attachment-thumbnail-blog-featured wp-post-image" width="300" height="165" title=""
+          alt="" src="<?php echo (isset($image_attributes[0]) && $image_attributes[0] != '') ? $image_attributes[0]  : ''  ; ?>" >
+          <div class="title-box frontend-title  ">
+             <span class="vcard author">
+                <div>
+                <img style="max-width:60px;" src="<?php echo get_template_directory_uri().'/images/context/'.$context[$getcontext] ;?>" alt="ASININE">
+                </div>
+             </span>
+             <div class="instrument-<?php echo $key; ?>" ></div>
+             <div class="clear"></div>
+             <h2><a class="frondendgraph" href="javascript:void(0)"><?php echo $value->title; ?></a></h2>
+
+         </div>   
+        <div class="123  frondendgraph graph_instrument  trig-function-php" id="graphdetail-<?php echo $key; ?>" >
+             <input type="hidden" value='<?php echo $value->instrument; ?>' class="instrument"> 
+             <div class='container frondendgraphhide' id="<?php echo 'container-'.$key; ?>" ></div>  
+        </div>
+
+       </li>
+    <?php  } ?>
+    <?php  query_posts( array( 'post_type' => array('exchange','post'),'posts_per_page' => esc_attr($smof_data['featured-posts']) , 'tag__in' => array($tag_id_rss,$tag_id_featured)  ) );  ?>
+          <?php // query_posts( array( 'post_type' => 'post', 'tag' => 'featured', 'posts_per_page' => esc_attr($smof_data['featured-posts']) ) );  ?> 
+          <?php if (have_posts()) : while (have_posts()) : the_post(); ?> 
+          <?php $temp= get_post_custom_values('exchange_url',$post->ID); if($temp[0] == ''){$redirect_link = get_permalink($post->ID);}else{$redirect_link=$temp[0];}?>
+
+          <li <?php post_class('post-slide') ?>  onclick="window.location.href='<?=$redirect_link?>'" style="cursor: pointer;" >
+            <?php if ( has_post_thumbnail()) { ?>
+          <div class="article-category"><i></i> <?php $category = get_the_category(); if ($category) 
+            { echo wp_kses_post('<a href="' . get_category_link( $category[0]->term_id ) . '" class="tiptipBlog" title="' . sprintf( esc_html__( "View all posts in %s", "anthemes" ), $category[0]->name ) . '" ' . '>' . $category[0]->name.'</a> ');}  ?>
+        </div><!-- end .article-category -->    
+
+        <?php the_post_thumbnail('thumbnail-blog-featured', array('title' => "")); ?>
+        <?php } // Post Thumbnail ?>
+
+        <div class="title-box">
+        <?php 
+        global $post;
+        ?>
+        <span class="vcard author">
+             <?=acf_context_add($post->ID)?>
+        </span>
+            <div class="article-comm header-comment"><?php comments_popup_link('<i class="fa fa-comments"></i> 0', '<i class="fa fa-comments"></i> 1', '<i class="fa fa-comments"></i> %'); ?>
+            </div>
+            <!--span class="header-author"><?php esc_html_e('By', 'anthemes'); ?> <?php the_author(); ?></span--> 
+            
+          
+            <?php /*   <span><?php echo "this".the_author_posts_link(); ?></span> */ ?>
+             
+            <?php if(function_exists('taqyeem_get_score')) { ?> <?php taqyeem_get_score(); ?> <?php } ?>                    
+            <div class="clear"></div>
+            <h2><a href="<?=$redirect_link?>"><?php if ( strlen(get_the_title()) > 70 ) { echo substr(get_the_title(), 0, 70)." ..."; } else { the_title(''); } ?>
+
+            </a></h2>
+
+        </div>
+
+    </li><!-- end .post-slide --> 
+<?php endwhile; endif; wp_reset_query(); ?> 
+</ul><!-- end .featured-articles-slider --> 
+
+<div class="clear"></div>             
+</div><!-- end .featured-articles -->
+<?php }
+// }
+ ?>
+<!--<div class='graphdynamic'>
+  <div class="graph-section" style='display:none;'>
+    <div class="header-section ">
+      <h5 class='stock_title'></h5>
+    </div>
+    <div class="graph-left-side">
+        <span class='graph-left-side-first'> 
+          <span class='symbol'>  </span> 
+          <span class='name'>  </span> 
+        </span>
+        <span class='stockprice'></span>
+        <span class='graph-left-side-price'></span>
+        <span class='percentchange'></span>
+         <div class='containerchart' style="height:250px; max-width: 500px;"></div>
+    </div>
+    <div class="graph-right-side">
+        <span class='graph-left-side-price'></span>
+        <span class='percentchange'><span>
+    </div>
+</div>
+</div> -->
+<div class='graphdynamic'>
+<div class='loading-graph' id="loading-graph" style='display:none;'>Please wait...</div>
+  <div class="graph-section" style='display:none;'>
+    <div class="header-section ">
+      <h4 class='symbol'>  </h4> 
+      <p class='name'>  </p> 
+    </div>
+    <div class="graph-left-side">
+        <span class='graph-left-side-first'> 
+        </span>
+        <span class='stockprice'></span>
+        <span class='graph-left-side-price'></span>
+        <span class='percentchange'></span>
+         <div class='containerchart' style="height:250px; max-width: 300px;"></div>
+    </div>
+    <div class="graph-right-side">
+        <div class="graph-right-inside">
+            <span class='graph-left-side-price'></span>
+            <span class='percentchange'></span>
+        </div>
+    </div>
+   </div>
+</div>
+
+ 

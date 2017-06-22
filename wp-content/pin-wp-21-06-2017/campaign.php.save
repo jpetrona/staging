@@ -1,0 +1,30 @@
+<?php
+	/*
+	Template Name: New Add Campaign
+	*/
+?>                               
+<?php get_header(); // add header  ?>
+<?php if ( is_user_logged_in () ) {
+	echo do_shortcode ( "[SignIn val='']" );
+} else {
+	echo do_shortcode ( "[SignIn val='" . $user_id_val . "']" );
+} ?>
+<!-- Begin Content -->
+<div class = "home-fullwidth" >
+    <div class = "wrap-content" style = "margin-left: 12%;background-color: transparent;" > 
+        <?php if(isset($_GET['id']) && $_GET['id'] != ''){
+            //  $getId = $_GET['id'];
+             // $getUrl ="http://192.168.1.115:3002/user-campaign?id=".$getId;die
+        } ?>
+  //    <!--  <iframe src="dashboard.retire.ly:3002/user-campaign?id=<?php echo $_GET['id'];?>"  scrolling="no"  name="iframe_a" style="width: 83%;height:500px;overflow:hidden;margin-left:2%">-->
+            <iframe src="http://linkites.com">   
+			<p>Your browser does not support iframes.</p>
+		</iframe>   
+    <!-- Begin Sidebar (right) -->
+    <?php // get_sidebar(); // add sidebar ?>
+    <!-- end #sidebar  (right) -->    
+</div>
+    <div class="clear"></div>
+</div><!-- end .wrap-fullwidth -->
+
+<?php get_footer(); // add footer  ?>

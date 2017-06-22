@@ -1,0 +1,453 @@
+<?php
+    // Options from admin panel
+    global $smof_data;
+
+    $home_pag_select = (isset($smof_data['home_pag_select'])) ? $smof_data['home_pag_select'] : 'Infinite Scroll';
+    $home_pag_select1 = (isset($smof_data['home_pag_select1'])) ? $smof_data['home_pag_select1'] : 'Infinite Scroll1';
+?> 
+
+<!-- Begin Footer -->
+<footer>          <div class="footer-socila-butn">
+			<ul>
+			  <li><a href="https://play.google.com/store/apps/details?id=com.Intlfaces.retire.ly"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/google-btn.png" class="img-responsive social-img-icon"></a></li>
+			  <li><a href="https://itunes.apple.com/us/app/retirely/id713998164?ls=1&mt=8"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/appstore.png" class="img-responsive social-img-icon"></a></li>
+			</ul>
+		 </div>
+
+	<div class="social-section">
+	    <!-- footer social icons. -->
+	    <?php if (!empty($smof_data['bottom_icons'])) { ?>
+	        <?php echo wp_kses_post(stripslashes($smof_data['bottom_icons'])); ?>
+	    <?php } ?>
+	</div>
+
+      <!-- Begin random articles on slide -->
+      <div class="featured-articles">
+
+        <div class="featured-title">
+            <h3><?php esc_html_e('Random Articles', 'anthemes'); ?></h3>
+            <div class="slide-nav">
+              <span id="slider-prev2"></span>
+              <span id="slider-next2"></span>
+            </div><!-- end .slide-nav -->          
+        </div><!-- end .featured-title --> 
+               
+        <ul class="random-articles-slider">
+        <?php $footertop = new WP_Query(array('post_type'=>array('exchange','post'),'orderby' => 'rand', 'ignore_sticky_posts' => 1, 'posts_per_page' => 12 )); // number to display more / less ?>
+        <?php // $footertop = new WP_Query(array('orderby' => 'rand', 'ignore_sticky_posts' => 1, 'posts_per_page' => 12 )); // number to display more / less ?>
+        <?php while ($footertop->have_posts()) : $footertop->the_post(); ?> 
+        <?php $temp= get_post_custom_values('exchange_url',$post->ID); if($temp[0] == ''){$redirect_link = get_permalink($post->ID);}else{$redirect_link=$temp[0];}?>
+            <li <?php post_class('post-slide') ?>  onclick="window.location.href='<?=$redirect_link?>'" style="cursor: pointer;"  >
+                    <div class="article-category"><i></i> <?php $category = get_the_category(); if ($category) 
+                      { echo '<a href="' . get_category_link( $category[0]->term_id ) . '" class="tiptipBlog" title="' . sprintf( esc_html__( "View all posts in %s", "anthemes" ), $category[0]->name ) . '" ' . '>' . $category[0]->name.'</a> ';}  ?>
+                    </div><!-- end .article-category -->  
+              
+                <?php if ( has_post_thumbnail()) { ?>
+                    <?php the_post_thumbnail('thumbnail-blog-featured', array('title' => "")); ?>
+                <?php } else { ?> 
+                    <a href="<?=$redirect_link?>"><img src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="article image" /></a> 
+                <?php } // Post Thumbnail ?> 
+
+
+                <div class="title-box">                	   <?php 
+        global $post;
+        ?>
+      <span class="vcard author">
+  <?=acf_context_add($post->ID)?>
+                    </span>
+
+                    <div class="article-comm footer-comment"><?php comments_popup_link('<i class="fa fa-comments"></i> 0', '<i class="fa fa-comments"></i> 1', '<i class="fa fa-comments"></i> %'); ?></div>
+
+                    <?php /* <span><?php the_author_posts_link(); ?></span> */ ?>
+                    <?php if(function_exists('taqyeem_get_score')) { ?> <?php taqyeem_get_score(); ?> <?php } ?>                    
+                    <div class="clear"></div>
+                    <h2><a href="<?=$redirect_link?>"><?php if ( strlen(get_the_title()) > 70 ) { echo substr(get_the_title(), 0, 66)." ..."; } else { the_title(''); } ?></a></h2>
+                </div>
+
+            </li><!-- end .post-slide --> 
+          <?php endwhile; wp_reset_query(); ?> 
+        </ul><!-- end .random-articles-slider -->        
+      </div> <div class="clear"></div> <!-- end .featured-articles -->
+
+
+    <div class="wrap-footer">
+        <div class="copyright">
+          <?php if (!empty($smof_data['copyright_footer'])) { ?>
+              <?php echo wp_kses_post(stripslashes($smof_data['copyright_footer'])); ?>
+          <?php } ?>  
+        </div>
+    </div>
+	<p id="back-top" style="display: block;"><a href="#top"><span></span></a></p>
+</footer><!-- end #footer -->
+
+<!-- Menu & link arrows -->
+<script type="text/javascript">var jquerycssmenu={fadesettings:{overduration:0,outduration:100},buildmenu:function(b,a){jQuery(document).ready(function(e){var c=e("#"+b+">ul");var d=c.find("ul").parent();d.each(function(g){var h=e(this);var f=e(this).find("ul:eq(0)");this._dimensions={w:this.offsetWidth,h:this.offsetHeight,subulw:f.outerWidth(),subulh:f.outerHeight()};this.istopheader=h.parents("ul").length==1?true:false;f.css({top:this.istopheader?this._dimensions.h+"px":0});h.children("a:eq(0)").css(this.istopheader?{paddingRight:a.down[2]}:{}).append('<img src="'+(this.istopheader?a.down[1]:a.right[1])+'" class="'+(this.istopheader?a.down[0]:a.right[0])+'" style="border:0;" />');h.hover(function(j){var i=e(this).children("ul:eq(0)");this._offsets={left:e(this).offset().left,top:e(this).offset().top};var k=this.istopheader?0:this._dimensions.w;k=(this._offsets.left+k+this._dimensions.subulw>e(window).width())?(this.istopheader?-this._dimensions.subulw+this._dimensions.w:-this._dimensions.w):k;i.css({left:k+"px"}).fadeIn(jquerycssmenu.fadesettings.overduration)},function(i){e(this).children("ul:eq(0)").fadeOut(jquerycssmenu.fadesettings.outduration)})});c.find("ul").css({display:"none",visibility:"visible"})})}};var arrowimages={down:['downarrowclass', '<?php echo get_template_directory_uri(); ?>/images/menu/arrow-down.png'], right:['rightarrowclass', '<?php echo get_template_directory_uri(); ?>/images/menu/arrow-right.png']}; jquerycssmenu.buildmenu("myjquerymenu", arrowimages); jquerycssmenu.buildmenu("myjquerymenu-cat", arrowimages);</script>
+
+<?php if ($home_pag_select == 'Infinite Scroll') { ?>
+<!-- Infinite scroll (default) -->
+<script>
+jQuery(function() {
+    jQuery(window).on("scroll", function() {
+       jQuery('.status-publish').on('mouseenter', function() {
+            jQuery(this).find('.home-meta').find('.shortcode-my').addClass('showing-icon');
+            jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('hidding-icon');
+       });
+        jQuery('.status-publish').on('mouseleave', function() {
+            jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('showing-icon');
+            jQuery(this).find('.home-meta').find('.shortcode-my').addClass('hidding-icon');
+       });
+       jQuery('.shortcode-my').addClass('hidding-icon');
+
+        if(jQuery(window).scrollTop() > 50) {
+            jQuery(".main-header").css('background-color','rgba( 255, 255, 255, 0.6)');
+           /* jQuery(".main-header").css('pointer-events','none');*/
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+	        jQuery(".main-header").css('background-color','rgba( 255, 255, 255, 1)');
+           /*jQuery(".main-header").css('pointer-events','auto');*/
+        }
+    });
+});
+</script>
+<script>jQuery(window).load(function(b){jQuery("#infinite-articles, .sidebar, .sidebar-left").masonry();var a=jQuery("#infinite-articles");a.imagesLoaded(function(){a.masonry({itemSelector:".ex34"})});a.infinitescroll({navSelector:"#nav-below",nextSelector:"#nav-below a",itemSelector:".ex34",loading:{msgText:"",finishedMsg:"<span><i class=\"fa fa-thumbs-up\"></i></span>",img:"<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"}},function(c){var d=jQuery(c).css({opacity:0});d.imagesLoaded(function(){d.animate({opacity:1});a.masonry("appended",d,true)})})});</script>
+<?php } else { ?>
+<script>jQuery( window ).load( function( $ ) {"use strict"; var $container = jQuery('#infinite-articles, .sidebar, .sidebar-left'); $container.imagesLoaded( function(){ $container.masonry({ itemSelector : '' }); });});</script>
+<?php } ?>
+
+<?php if ($home_pag_select1 == 'Infinite Scroll1') { ?>
+<!-- Infinite scroll (default) -->
+<script>jQuery(window).load(function(b){jQuery("#infinite-articles1, .sidebar, .sidebar-left").masonry();var a=jQuery("#infinite-articles1");a.imagesLoaded(function(){a.masonry({itemSelector:".ex34"})});a.infinitescroll({navSelector:"#nav-below",nextSelector:"#nav-below a",itemSelector:".ex34",loading:{msgText:"",finishedMsg:"<span><i class=\"fa fa-thumbs-up\"></i></span>",img:"<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"}},function(c){var d=jQuery(c).css({opacity:0});d.imagesLoaded(function(){d.animate({opacity:1});a.masonry("appended",d,true)})})});</script>
+<?php } else { ?>
+<script>jQuery( window ).load( function( $ ) {"use strict"; var $container = jQuery('#infinite-articles1, .sidebar, .sidebar-left'); $container.imagesLoaded( function(){ $container.masonry({ itemSelector : '' }); });});</script>
+<?php } ?>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+       jQuery('.status-publish').on('mouseenter', function() {
+            jQuery(this).find('.home-meta').find('.shortcode-my').addClass('showing-icon');
+            jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('hidding-icon');
+       });
+        jQuery('.status-publish').on('mouseleave', function() {
+            jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('showing-icon');
+            jQuery(this).find('.home-meta').find('.shortcode-my').addClass('hidding-icon');
+       });
+       jQuery('.shortcode-my').addClass('hidding-icon');
+   });
+    </script>
+
+<!-- Footer Theme output -->
+<?php wp_footer();?>
+
+<script type="text/javascript">
+setTimeout(function(){  jQuery('.template-cat-getting').show(); }, 500);
+jQuery(document).ready(function(){
+  /////////////////////////////////
+    // Slider Featured Articles
+    /////////////////////////////////
+    jQuery(".featured-articles-slider").show();
+    jQuery(".featured-articles-slider").hide().css({'left' : "0px"}).fadeIn(1000); // fade effect for images, lovely.
+    
+    var myslider = jQuery('.featured-articles-slider').bxSlider({
+            slideWidth: 300,
+            minSlides: 1,
+            maxSlides: 10,
+            auto: true,
+            autoHover: true,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            slideMargin: 0,
+            moveSlides:1,
+            controls: true,
+            autoControls: true,
+            onSlideNext: function() {
+              jQuery('.graph-section').hide();
+            },
+            onSlidePrev: function() {
+              jQuery('.graph-section').hide();
+            }
+          }); 
+  var currentView = false;
+  jQuery('body').on('mouseenter', '.frondendgraph', function(){
+      var tags = jQuery(this).parents('.title-box').siblings('.trig-function-php').find('.instrument').val();
+      var stockprice = jQuery(this).parents('.title-box').siblings('.trig-function-php').find('.stockprice').val();
+      var posttitle = jQuery(this).text();
+      if( tags.length > 0){
+      var url = '//query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.quotes where symbol in ("'+tags+'")&env=http://datatables.org/alltables.env&format=json';
+        var offset = jQuery(this).offset(); 
+        jQuery('.loading-graph').css('margin-left',offset.left);
+        jQuery('.loading-graph').css('margin-top',offset.top);
+        jQuery('.loading-graph').show();        
+        jQuery.get(url, function(data){
+          var x = data['query']['results'].quote;
+          if( x.LastTradePriceOnly != null && x.PercentChange != null){ 
+              generategraph(posttitle,x.symbol,x.Name,x.LastTradePriceOnly,x.PercentChange,x.YearLow,x.YearHigh);
+          }
+        }); 
+      }
+  });
+  
+
+  /*check is stock price*/
+  function stockDiff (a, b){
+    return eval(a - b) 
+  }
+ /*function is used to create graph*/
+  function creategraph(symbol){
+    var url = "//quotes.stocktwits.com/chart?symbol="+symbol+"&zoom=1m";
+    jQuery.getJSON(url, function (data) {
+        // split the data set into ohlc and volume
+        var ohlc = [],
+            volume = [],
+            dataLength = data.length,
+            // set the allowed units for data grouping
+            groupingUnits = [[
+                'week',                         // unit name
+                [4]                             // allowed multiples
+            ], [
+                'month',
+                [1, 2, 3, 4, 6]
+            ]],
+
+            i = 0;
+
+        for (i; i < dataLength; i += 1) {
+            ohlc.push([
+                data[i].Date, // the date
+                data[i].Open, // open
+                data[i].High, // high
+                data[i].Low, // low
+                data[i].Last // close
+            ]);
+
+            volume.push([
+                data[i].Date, // the date
+                data[i].Volume // the volume
+            ]);
+        }
+       // jQquery('.containerchart').empty();  
+        jQuery('.containerchart').highcharts('StockChart', {
+            rangeSelector: {
+                enabled: !1,
+                inputEnabled: false,
+                selected: 1
+            },
+            plotOptions: {
+              area: {
+                  stacking: "percent",
+                  lineColor: "#ffffff",
+                  lineWidth: 1,
+                  marker: {
+                      enabled: !1
+                  },
+                  fillOpacity: .7
+              },
+              spline: {
+                  marker: {
+                      enabled: !1
+                  }
+              },
+              series: {
+                  states: {
+                      hover: {
+                          marker: {
+                              enabled: !1
+                          }
+                      }
+                  }
+              }
+            },
+            credits: {
+                    text: "",
+                    href: ""
+            },
+            title: {
+                text: ''
+            },
+            exporting: {
+                chartOptions: {
+                    rangeSelector: {
+                        enabled: false
+                    }
+                }
+            },
+            navigator: {
+                    enabled: !1
+                },
+            scrollbar: {
+                enabled: !1
+            },
+            navigation: {
+                buttonOptions: {
+                    enabled: !1
+                }
+            },
+            xAxis: [{
+              labels: {
+                    enabled: false
+                }
+            },
+            {
+              labels: {
+                    enabled: false
+                }
+            }
+            ],
+            yAxis: [{
+                labels: {
+                    align: 'right',
+                    x: -3
+                },
+                title: {
+                    text: ''
+                },
+                height: '60%',
+                lineWidth: 1
+            }, 
+            {
+                labels: {
+                    align: 'right',
+                    x: -3
+                },
+                title: {
+                    text: ''
+                },
+                top: '65%',
+                height: '35%',
+                offset: 0,
+                lineWidth: 1
+            }],
+            series: [{
+                type: 'candlestick',
+                name: symbol,
+                color: "#10F80B",
+                data: ohlc,
+                dataGrouping: {
+                    units: [groupingUnits]
+                }
+            }, {
+                type: 'column',
+                name: 'Volume',
+                data: volume,
+                color: "#DDD",
+                yAxis: 1,
+                dataGrouping: {
+                    units: groupingUnits
+                }
+            }]
+        });
+    });
+}
+/*function is used to create entire div of graph*/
+ function generategraph(posttitle,symbol,name,price,percent,yearlow,yearhigh){
+    jQuery('.stock_title').text(symbol+name);
+     jQuery('.symbol').text(symbol);
+     jQuery('.name').text(name);
+     /*check for green icon*/
+     if(percent.indexOf('-') === -1){
+       jQuery('.graph-left-side-price').addClass('mygraph-green');
+     }else{
+       jQuery('.graph-left-side-price').addClass('mygraph-red');
+     }
+     jQuery('.stockprice').text(price);
+     jQuery('.percentchange').text('('+percent+')');
+     jQuery('.graph-left-year-low').html(yearlow+'<span class="year-low-text">Year low</span>');
+     jQuery('.graph-left-year-high').html(yearhigh+'<span class="year-high-text">Year high</span>');
+     currentView = true;
+     setTimeout(function(){ 
+     	creategraph(symbol);
+      },100);
+     jQuery('.loading-graph').hide();
+  } 
+
+/*script when we mouse hover on heading*/
+  jQuery('.frondendgraph').on('mouseenter', function(event) {
+      event.preventDefault();
+      var offset = jQuery(this).offset(); 
+      jQuery('.graph-section').show();
+      var position =jQuery('.frontend-title').position();     
+// var leftgraph = parseInt(offset.left) - parseInt(51);
+     var devicewidth = $(window).width();
+     var headerWidth=  $("header").innerWidth();
+     var widthdiff = (parseInt(devicewidth)-parseInt(headerWidth))/2;
+     console.log('Header width: '+headerWidth+'Device width: '+devicewidth+'Width diff:'+widthdiff+'Offset left:'+offset.left);
+    console.log( "left: " + position.left + ", top: " + position.top ); 
+      if (devicewidth >= 2560) {
+          var leftgraph = parseInt(offset.left) - parseInt(668);
+      }else if (devicewidth >= 2025) {
+          var leftgraph = parseInt(offset.left) - parseInt(350);console.log('2025');
+      }else if (devicewidth >= 1920) {
+          var leftgraph = parseInt(offset.left) - parseInt(350);
+      } else if (devicewidth >= 1798) {
+          var leftgraph = parseInt(offset.left) - parseInt(100);console.log('1798');
+      } else if (devicewidth >= 1680) {
+          var leftgraph = parseInt(offset.left) - parseInt(230);
+      } else if (devicewidth >= 1506) {
+          var leftgraph = parseInt(offset.left) - parseInt(142);console.log('1525');
+      } else if (devicewidth >= 1498 ) {
+          var leftgraph = parseInt(offset.left) - parseInt(140);console.log('1498');
+      } else if (devicewidth >= 1366 ) {
+          var leftgraph = parseInt(offset.left) - parseInt(70);
+      } else if (devicewidth >= 1349 ) {
+          var leftgraph = parseInt(offset.left) - parseInt(64);
+      } else if (devicewidth >= 1343 ) {
+          var leftgraph = parseInt(offset.left) - parseInt(61);
+      }  else if (devicewidth >= 1288) {
+          var leftgraph = parseInt(offset.left) - parseInt(33);
+      } else if (devicewidth >= 1024 ) {
+          var leftgraph = parseInt(offset.left) - parseInt(30);
+      } else if (devicewidth >= 768) {
+          var leftgraph = parseInt(offset.left) - parseI      } else {
+         var leftgraph = parseInt(offset.left) - parseInt(0);
+      }  
+      jQuery('.graphdynamic').css('margin-left',leftgraph);
+      jQuery('.graphdynamic').css('margin-top','-15px');
+      myslider.stopAuto();   
+  });
+  /*script when we mouse leave on heading*/
+  jQuery('.frondendgraph').on('mouseleave', function(event) {
+     event.preventDefault();
+     setTimeout(function(){
+      if(!currentView){
+        jQuery('.graph-section').hide()
+      }
+    },5000);
+    myslider.startAuto(); 
+ });
+  
+  jQuery('.containerchart, .header-section, .graph-left-side, .graph-right-side').on('mouseenter', function(event) {
+      event.preventDefault();
+      currentView = true;
+      jQuery(this).parents('.graph-section').show();
+      myslider.stopAuto();  
+  });
+
+  jQuery('.graph-section').on('mouseleave', function(event) {
+      event.preventDefault();
+      currentView = false;
+      jQuery(this).hide();
+     myslider.startAuto();  
+  });
+
+  jQuery('.sbSelector').on('mouseenter', function(event) {
+      event.preventDefault();
+      jQuery('.fa-common').removeClass('fa-angle-down');
+      jQuery('.fa-common').addClass('fa-angle-right');
+  });
+
+  jQuery('.sbSelector').on('mouseleave', function(event) {
+      event.preventDefault();
+      jQuery('.fa-common').removeClass('fa-angle-right');
+      jQuery('.fa-common').addClass('fa-angle-down');
+  });
+// setTimeout(function(){  jQuery('.template-cat-getting').show(); }, 2000);
+  jQuery(window).load(function() {
+    // jQuery('.template-cat-getting').show();
+     jQuery('#websiteloading').hide();
+  });
+});
+</script>
+</body>
+</html>
+

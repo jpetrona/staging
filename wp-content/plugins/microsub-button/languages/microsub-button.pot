@@ -1,0 +1,71 @@
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Microsub Button 0.1\n"
+"Report-Msgid-Bugs-To: https://microsub.io/#/documentation/button\n"
+"POT-Creation-Date: 2016-11-19 18:49:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Eugene REtunsky <eugene@microsub.io>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+
+msgid "Microsub Button"
+msgstr ""
+
+msgid "Account Id"
+msgstr ""
+
+msgid "Button Caption"
+msgstr ""
+
+msgid "The button caption."
+msgstr ""
+
+msgid "Paste your account id here&hellip;"
+msgstr ""
+
+msgid "E.g. &ldquo;Support Us&rdquo;"
+msgstr ""
+
+msgid "Will be inserted just before the <code>&lt;/body&gt;</code> tag."
+msgstr ""
+
+msgid "Button settings"
+msgstr ""
+
+msgid "If you&rsquo;ve found this plugin useful or interesting, please <a href=\"%s\" target=\"_blank\">let us know</a> your opinion."
+msgstr ""
+
+msgid "Adding a \"Support us\" button."
+msgstr ""
+
+msgid "Eugene Retunsky"
+msgstr ""
+
+msgid "https://microsub.io/"
+msgstr ""
+
+msgid "You need to get one on https://microsub.io"
+msgstr ""
+
+msgid "Show Eyes"
+msgstr ""
+
+msgid "If the button has a pair of mouse tracking eyes."
+msgstr ""
+
+msgid "You need to get one on https://microsub.io"
+msgstr ""
+
+msgid "Article Filter"
+msgstr ""
+
+msgid "Comma separated items (e.g. author names)"
+msgstr ""
+
+msgid "Required substrings to show the button"
+msgstr ""
+

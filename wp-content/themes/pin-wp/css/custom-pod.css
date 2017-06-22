@@ -1,0 +1,52 @@
+.pods-field input { border: 1px solid #ccc; border-radius: 3px; height: 34px !important; padding: 0 0 0 8px; }
+.pods-form-front .pods-field-input input, .pods-form .pods-field table.pods-metabox { width:57% !important; border:1px solid #66afe9; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6); outline: 0 none ;  }
+/*.pods-field input:focus {
+border:1px solid #66afe9; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+ outline: 0 none ; }*/
+#mceu_42 > iframe:focus { border:1px solid #66afe9 !important; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+ outline: 0 none !important; }
+ .pods-form-front .pods-field-input select:focus {
+border-color: #66afe9; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+ outline: 0 none ; }
+.pods-form-front .pods-field-label { float:none !important; }
+.pods-form-front .pods-field-input { width: 100% !important; }
+#pods-form-ui-pods-field-post-content_ifr { height: 118px !important; }
+.pods-form-front .pods-field-input select { height:34px !important; min-width: 100% !important; }
+.pods-form-front .pods-submit { float:none !important; } 
+.pods-submit-button { background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #fff0aa 0px, #f8e074 100%) repeat scroll 0 0; border: 1px solid; border-color: #e6e5e0 #c5c3bf #9c9893; border-radius: 4px; text-shadow: 0 1px 1px rgba(250, 250, 250, 0.5); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6); color:#444444; cursor: pointer; display: inline-block; font-size: 18px; font-weight: 400; line-height: 1.42857; margin-bottom: 20px; margin-top: 10px; outline: 0 none; padding: 6px 12px; text-align: center;
+ vertical-align: middle; white-space: nowrap; width: auto !important; }
+.pods-submit-button:hover, .pods-submit-button:focus {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #fff8d6 0px, #fff0a3 100%) repeat scroll 0 0;
+}
+
+
+ .pods-field label { color: #818181; font-size: 11px; font-weight: 500; padding-bottom: 0 !important; }
+/* .post-block-custom { background-color: #ffffff; border: 1px solid #cccccc; border-radius: 4px;
+  font-weight: bold; margin: 0 13% 3%; padding: 2% 1.5%; width: auto; }*/
+ .mce-edit-area .mce-container .mce-panel .mce-stack-layout-item { border:1px solid #cccccc !important; }
+ .mce-edit-area .mce-container .mce-panel .mce-stack-layout-item:focus { border:1px solid #66afe9 !important;
+ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6) !important;
+ outline: 0 none !important; }
+ .pods-field, p.pods-add-file { padding:0 !important;}
+ .pods-form-front .pods-field-label { padding:0 !important;}
+.mce-ico { font-size:11px !important; padding:0 !important; height: auto !important; width:auto !important;}
+.mce-container-body.mce-flow-layout { display: inline-block !important; }
+.mce-container.mce-toolbar.mce-first.mce-stack-layout-item { display: inline-block !important; }
+.mce-container.mce-toolbar.mce-last.mce-stack-layout-item {display: inline-block !important;margin-left: 5px; }
+.pods-form-front .pods-field-input select { margin-top:0 !important;}
+.pods-field.pods-form-ui-row-type-pick.pods-form-ui-row-name-post-status { display: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

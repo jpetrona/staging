@@ -1,0 +1,2373 @@
+<?php
+
+// Options from admin panel
+
+  global $smof_data;
+
+  $home_pag_select = (isset($smof_data['home_pag_select'])) ? $smof_data['home_pag_select'] : 'Infinite Scroll';
+
+  $home_pag_select1 = (isset($smof_data['home_pag_select1'])) ? $smof_data['home_pag_select1'] : 'Infinite Scroll1';
+
+?>
+
+<!-- Begin Footer -->
+
+<footer>
+
+  <div class="footer-socila-butn">
+
+    <ul>
+
+      <li><a href="https://play.google.com/store/apps/details?id=com.Intlfaces.retire.ly"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/google-btn.png" class="img-responsive social-img-icon"></a></li>
+
+      <li><a href="https://itunes.apple.com/us/app/retirely/id713998164?ls=1&mt=8"><img src="<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] . '/'; ?>2015/03/appstore.png" class="img-responsive social-img-icon"></a></li>
+
+      </ul>
+
+  </div>
+
+  <div class="social-section">
+
+   <!-- footer social icons. -->
+
+    <?php if (!empty($smof_data['bottom_icons'])) { ?>
+
+       <?php echo wp_kses_post(stripslashes($smof_data['bottom_icons'])); ?>
+
+    <?php } ?>
+
+  </div>
+
+  <!-- Begin random articles on slide -->
+
+  <div class="featured-articles">
+
+      <div class="featured-title">
+
+          <h3><?php esc_html_e('Random Articles', 'anthemes'); ?></h3>
+
+          <div class="slide-nav">
+
+              <span id="slider-prev2"></span>
+
+              <span id="slider-next2"></span>
+
+          </div><!-- end .slide-nav -->
+
+      </div><!-- end .featured-title -->
+
+      <ul class="random-articles-slider">
+
+        <?php $footertop = new WP_Query(array('post_type'=>array('exchange','post'),'orderby' => 'rand', 'ignore_sticky_posts' => 1, 'posts_per_page' => 12 )); // number to display more / less ?>
+
+        <?php // $footertop = new WP_Query(array('orderby' => 'rand', 'ignore_sticky_posts' => 1, 'posts_per_page' => 12 )); // number to display more / less ?>
+
+        <?php while ($footertop->have_posts()) : $footertop->the_post(); ?>
+
+        <?php $temp= get_post_custom_values('exchange_url',$post->ID); if($temp[0] == ''){$redirect_link = get_permalink($post->ID);}else{$redirect_link=$temp[0];}?>
+
+        <li <?php post_class('post-slide') ?>  onclick="window.location.href='<?=$redirect_link?>'" style="cursor: pointer;"  >
+
+            <div class="article-category"><i></i> <?php $category = get_the_category(); if ($category) 
+
+                { echo '<a href="' . get_category_link( $category[0]->term_id ) . '" class="tiptipBlog" title="' . sprintf( esc_html__( "View all posts in %s", "anthemes" ), $category[0]->name ) . '" ' . '>' . $category[0]->name.'</a> ';}  ?>
+
+            </div><!-- end .article-category -->
+
+            <?php if ( has_post_thumbnail()) { ?>
+
+                 <?php the_post_thumbnail('thumbnail-blog-featured', array('title' => "")); ?>
+
+            <?php } else { ?> 
+
+                 <a href="<?=$redirect_link?>"><img src="<?php echo get_template_directory_uri(); ?>/images/no-img.png" alt="article image" /></a> 
+
+            <?php } // Post Thumbnail ?> 
+
+        <div class="title-box">
+
+        <?php 
+
+          global $post;
+
+        ?>
+
+        <span class="vcard author">
+
+        <?=acf_context_add($post->ID)?>
+
+        </span>
+
+          <div class="article-comm footer-comment"><?php comments_popup_link('<i class="fa fa-comments"></i> 0', '<i class="fa fa-comments"></i> 1', '<i class="fa fa-comments"></i> %'); ?></div>
+
+            <?php /* <span><?php the_author_posts_link(); ?></span> */ ?>
+
+            <?php if(function_exists('taqyeem_get_score')) { ?> <?php taqyeem_get_score(); ?> <?php } ?>
+
+                <div class="clear"></div>
+
+                  <h2><a href="<?=$redirect_link?>"><?php if ( strlen(get_the_title()) > 70 ) { echo substr(get_the_title(), 0, 66)." ..."; } else { the_title(''); } ?></a></h2>
+
+                </div>
+
+             </li><!-- end .post-slide -->
+
+        <?php endwhile; wp_reset_query(); ?>
+
+       </ul><!-- end .random-articles-slider -->
+
+     </div> <div class="clear"></div> <!-- end .featured-articles -->
+
+   <div class="wrap-footer">
+
+      <div class="copyright">
+
+          <?php if (!empty($smof_data['copyright_footer'])) { ?>
+
+              <?php echo wp_kses_post(stripslashes($smof_data['copyright_footer'])); ?>
+
+          <?php } ?>
+
+      </div>
+
+   </div>
+
+   <p id="back-top" style="display: block;"><a href="#top"><span></span></a></p>
+
+</footer><!-- end #footer -->
+
+<!-- Menu & link arrows -->
+
+<script type="text/javascript">var jquerycssmenu={fadesettings:{overduration:0,outduration:100},buildmenu:function(b,a){jQuery(document).ready(function(e){var c=e("#"+b+">ul");var d=c.find("ul").parent();d.each(function(g){var h=e(this);var f=e(this).find("ul:eq(0)");this._dimensions={w:this.offsetWidth,h:this.offsetHeight,subulw:f.outerWidth(),subulh:f.outerHeight()};this.istopheader=h.parents("ul").length==1?true:false;f.css({top:this.istopheader?this._dimensions.h+"px":0});h.children("a:eq(0)").css(this.istopheader?{paddingRight:a.down[2]}:{}).append('<img src="'+(this.istopheader?a.down[1]:a.right[1])+'" class="'+(this.istopheader?a.down[0]:a.right[0])+'" style="border:0;" />');h.hover(function(j){var i=e(this).children("ul:eq(0)");this._offsets={left:e(this).offset().left,top:e(this).offset().top};var k=this.istopheader?0:this._dimensions.w;k=(this._offsets.left+k+this._dimensions.subulw>e(window).width())?(this.istopheader?-this._dimensions.subulw+this._dimensions.w:-this._dimensions.w):k;i.css({left:k+"px"}).fadeIn(jquerycssmenu.fadesettings.overduration)},function(i){e(this).children("ul:eq(0)").fadeOut(jquerycssmenu.fadesettings.outduration)})});c.find("ul").css({display:"none",visibility:"visible"})})}};var arrowimages={down:['downarrowclass', '<?php echo get_template_directory_uri(); ?>/images/menu/arrow-down.png'], right:['rightarrowclass', '<?php echo get_template_directory_uri(); ?>/images/menu/arrow-right.png']}; jquerycssmenu.buildmenu("myjquerymenu", arrowimages); jquerycssmenu.buildmenu("myjquerymenu-cat", arrowimages);</script>
+
+<?php if ($home_pag_select == 'Infinite Scroll') { ?>
+
+<!-- Infinite scroll (default) -->
+
+<script>
+
+jQuery(function() {
+
+    jQuery(window).on("scroll", function() {
+
+      jQuery('.status-publish').on('mouseenter', function() {
+
+          jQuery(this).find('.home-meta').find('.shortcode-my').addClass('showing-icon');
+
+          jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('hidding-icon');
+
+      });
+
+      jQuery('.status-publish').on('mouseleave', function() {
+
+          jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('showing-icon');
+
+          jQuery(this).find('.home-meta').find('.shortcode-my').addClass('hidding-icon');
+
+      });
+
+      jQuery('.shortcode-my').addClass('hidding-icon');
+
+      if(jQuery(window).scrollTop() > 50) {
+
+          jQuery(".main-header").css('background-color','rgba( 238, 238, 255, 0.6)');
+
+          /* jQuery(".main-header").css('pointer-events','none');*/
+
+      } else {
+
+         //remove the background property so it comes transparent again (defined in your css)
+
+        jQuery(".main-header").css('background-color','RGBA(238, 238, 255,1)');
+
+        /*jQuery(".main-header").css('pointer-events','auto');*/
+
+      }
+
+    });
+
+});
+
+</script>
+
+<script>jQuery(window).load(function(b){jQuery("#infinite-articles, .sidebar, .sidebar-left").masonry();var a=jQuery("#infinite-articles");a.imagesLoaded(function(){a.masonry({itemSelector:".ex34"})});a.infinitescroll({navSelector:"#nav-below",nextSelector:"#nav-below a",itemSelector:".ex34",loading:{msgText:"",finishedMsg:"<span><i class=\"fa fa-thumbs-up\"></i></span>",img:"<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"}},function(c){var d=jQuery(c).css({opacity:0});d.imagesLoaded(function(){d.animate({opacity:1});a.masonry("appended",d,true)})})});</script>
+
+<?php } else { ?>
+
+<script>jQuery( window ).load( function( $ ) {"use strict"; var $container = jQuery('#infinite-articles, .sidebar, .sidebar-left'); $container.imagesLoaded( function(){ $container.masonry({ itemSelector : '' }); });});</script>
+
+<?php } ?>
+
+<?php if ($home_pag_select1 == 'Infinite Scroll1') { ?>
+
+<!-- Infinite scroll (default) -->
+
+<script>jQuery(window).load(function(b){jQuery("#infinite-articles1, .sidebar, .sidebar-left").masonry();var a=jQuery("#infinite-articles1");a.imagesLoaded(function(){a.masonry({itemSelector:".ex34"})});a.infinitescroll({navSelector:"#nav-below",nextSelector:"#nav-below a",itemSelector:".ex34",loading:{msgText:"",finishedMsg:"<span><i class=\"fa fa-thumbs-up\"></i></span>",img:"<?php echo get_template_directory_uri(); ?>/images/ajax-loader.gif"}},function(c){var d=jQuery(c).css({opacity:0});d.imagesLoaded(function(){d.animate({opacity:1});a.masonry("appended",d,true)})})});</script>
+
+<?php } else { ?>
+
+<script>jQuery( window ).load( function( $ ) {"use strict"; var $container = jQuery('#infinite-articles1, .sidebar, .sidebar-left'); $container.imagesLoaded( function(){ $container.masonry({ itemSelector : '' }); });});</script>
+
+<?php } ?>
+
+<script type="text/javascript">
+
+  jQuery(document).ready(function(){
+
+    jQuery('.status-publish').on('mouseenter', function() {
+
+        jQuery(this).find('.home-meta').find('.shortcode-my').addClass('showing-icon');
+
+        jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('hidding-icon');
+
+    });
+
+    jQuery('.status-publish').on('mouseleave', function() {
+
+        jQuery(this).find('.home-meta').find('.shortcode-my').removeClass('showing-icon');
+
+        jQuery(this).find('.home-meta').find('.shortcode-my').addClass('hidding-icon');
+
+    });
+
+    jQuery('.shortcode-my').addClass('hidding-icon');
+
+  });
+
+</script>
+
+<!-- Footer Theme output -->
+
+<?php wp_footer();?>
+
+<script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/highstock.js" ></script>
+
+<script type="text/javascript" src="//code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript">
+
+/*function is used to create graph on detail page*/
+
+function creategraphdetail(symbol,x){
+
+  var stockname= x.Name;
+
+  var url = "//quotes.stocktwits.com/chart?symbol="+symbol+"&zoom=all";
+
+  jQuery.getJSON(url, function (data) {
+
+    // split the data set into ohlc and volume
+
+      var ohlc = [],
+
+          volume = [],
+
+          dataLength = data.length,
+
+          // set the allowed units for data grouping
+
+            groupingUnits = [[
+
+              'week',                         // unit name
+
+              [4]                             // allowed multiples
+
+            ], [
+
+              'month',
+
+              [1, 2, 3, 4, 6]
+
+            ]],
+
+            i = 0;
+
+          for (i; i < dataLength; i += 1) {
+
+              ohlc.push([
+
+                data[i].Date, // the date
+
+                data[i].Open, // open
+
+                data[i].High, // high
+
+                data[i].Low, // low
+
+                data[i].Last // close
+
+              ]);
+
+          volume.push([
+
+              data[i].Date, // the date
+
+              data[i].Volume // the volume
+
+          ]);
+
+
+
+        }
+
+
+
+        
+
+
+
+        jQuery('#graph-detail-page').highcharts('StockChart', {
+
+
+
+            chart: {
+
+
+
+              className: 'dark-container',
+
+
+
+            },
+
+
+
+            subtitle: {
+
+
+
+                text: stockname,
+
+
+
+                style: {
+
+
+
+                    color: '#000',
+
+
+
+                    font: 'bold 20px "Trebuchet MS", Verdana, sans-serif'
+
+
+
+                }
+
+
+
+            },
+
+
+
+            rangeSelector: {
+
+
+
+                enabled: !1,
+
+
+
+                inputEnabled: false,
+
+
+
+                selected: 1
+
+
+
+            },
+
+
+
+            plotOptions: {
+
+
+
+              candlestick: {
+
+
+
+                color: "#ED3B3B",
+
+
+
+                upColor: "#8ECF61", 
+
+
+
+                lineColor: "#ED3B3B", 
+
+
+
+                upLineColor: "#8ECF61"
+
+
+
+              },
+
+
+
+               area: {
+
+
+
+                  stacking: "percent",
+
+
+
+                  lineColor: "#ffffff",
+
+
+
+                  lineWidth: 1,
+
+
+
+                  marker: {
+
+
+
+                      enabled: !1
+
+
+
+                  },
+
+
+
+                  fillOpacity: .7
+
+
+
+              },
+
+
+
+              spline: {
+
+
+
+                  marker: {
+
+
+
+                      enabled: !1
+
+
+
+                  }
+
+
+
+              },
+
+
+
+              series: {
+
+
+
+                  states: {
+
+
+
+                      hover: {
+
+
+
+                          marker: {
+
+
+
+                              enabled: !1
+
+
+
+                          }
+
+
+
+                      }
+
+
+
+                  }
+
+
+
+              }
+
+
+
+            },
+
+
+
+            credits: {
+
+
+
+                    text: "",
+
+
+
+                    href: ""
+
+
+
+            },
+
+
+
+            title: {
+
+
+
+                text: ''
+
+
+
+            },
+
+
+
+            tooltip : {
+
+
+
+                color: "#10F80B",             
+
+
+
+                borderColor :  "#10F80B"
+
+
+
+            },
+
+
+
+            exporting: {
+
+
+
+                chartOptions: {
+
+
+
+                    rangeSelector: {
+
+
+
+                        enabled: false
+
+
+
+                    }
+
+
+
+                }
+
+
+
+            },
+
+
+
+            navigator: {
+
+
+
+                    enabled: !1
+
+
+
+                },
+
+
+
+            scrollbar: {
+
+
+
+                enabled: !1
+
+
+
+            },
+
+
+
+            navigation: {
+
+
+
+                buttonOptions: {
+
+
+
+                    enabled: !1
+
+
+
+                }
+
+
+
+            },
+
+
+
+            xAxis: [{
+
+
+
+              labels: {
+
+
+
+                    enabled: false
+
+
+
+                }
+
+
+
+            },
+
+
+
+            {
+
+
+
+              labels: {
+
+
+
+                    enabled: false
+
+
+
+                }
+
+
+
+            }
+
+
+
+            ],
+
+
+
+            yAxis: [{
+
+
+
+                labels: {
+
+
+
+                    align: 'right',
+
+
+
+                    x: -3
+
+
+
+                },
+
+
+
+                title: {
+
+
+
+                    text: ''
+
+
+
+                },
+
+
+
+                height: '60%',
+
+
+
+                lineWidth: 1
+
+
+
+            }, 
+
+
+
+            {
+
+
+
+                labels: {
+
+
+
+                    align: 'right',
+
+
+
+                    x: -3
+
+
+
+                },
+
+
+
+                title: {
+
+
+
+                    text: ''
+
+
+
+                },
+
+
+
+                top: '65%',
+
+
+
+                height: '35%',
+
+
+
+                offset: 0,
+
+
+
+                lineWidth: 1
+
+
+
+            }],
+
+
+
+            series: [{
+
+
+
+                type: 'candlestick',
+
+
+
+                name: symbol,
+
+
+
+                //color: "#ED3B3B",
+
+
+
+                data: ohlc,
+
+
+
+                dataGrouping: {
+
+
+
+                    units: [groupingUnits]
+
+
+
+                }
+
+
+
+            }, {
+
+
+
+                type: 'column',
+
+
+
+                name: 'Volume',
+
+
+
+                data: volume,
+
+
+
+                color: "#DDD",
+
+
+
+                yAxis: 1,
+
+
+
+                dataGrouping: {
+
+
+
+                    units: groupingUnits
+
+
+
+                }
+
+
+
+            }]
+
+
+
+        });
+
+
+
+    });
+
+
+
+}
+
+
+
+//setTimeout(function(){  jQuery('.template-cat-getting').show(); }, 500);
+
+
+
+jQuery(document).ready(function(){
+
+
+
+  /////////////////////////////////
+
+
+
+    // Slider Featured Articles
+
+
+
+    /////////////////////////////////
+
+
+
+    jQuery(".featured-articles-slider").show();
+
+
+
+    jQuery(".featured-articles-slider").hide().css({'left' : "0px"}).fadeIn(1000); // fade effect for images, lovely.
+
+
+
+    
+
+
+
+    var myslider = jQuery('.featured-articles-slider').bxSlider({
+
+
+
+            slideWidth: 300,
+
+
+
+            minSlides: 1,
+
+
+
+            maxSlides: 10,
+
+
+
+            auto: true,
+
+
+
+            autoHover: true,
+
+
+
+            nextSelector: '#slider-next',
+
+
+
+            prevSelector: '#slider-prev',
+
+
+
+            nextText: '<i class="fa fa-chevron-right"></i>',
+
+
+
+            prevText: '<i class="fa fa-chevron-left"></i>',
+
+
+
+            slideMargin: 0,
+
+
+
+            moveSlides:1,
+
+
+
+            controls: true,
+
+
+
+            autoControls: true,
+
+
+
+            onSlideNext: function() {
+
+
+
+              jQuery('.graph-section').hide();
+
+
+
+            },
+
+
+
+            onSlidePrev: function() {
+
+
+
+              jQuery('.graph-section').hide();
+
+
+
+            }
+
+
+
+          }); 
+
+
+
+  var currentView = false;
+
+
+
+  jQuery.ajaxQ = (function(){
+
+
+
+      var id = 0, Q = {};
+
+
+
+
+
+
+
+      jQuery(document).ajaxSend(function(e, jqx){
+
+
+
+        jqx._id = ++id;
+
+
+
+        Q[jqx._id] = jqx;
+
+
+
+      });
+
+
+
+      jQuery(document).ajaxComplete(function(e, jqx){
+
+
+
+        delete Q[jqx._id];
+
+
+
+      });
+
+
+
+
+
+
+
+      return {
+
+
+
+        abortAll: function(){
+
+
+
+          var r = [];
+
+
+
+          jQuery.each(Q, function(i, jqx){
+
+
+
+            r.push(jqx._id);
+
+
+
+            jqx.abort();
+
+
+
+          });
+
+
+
+          return r;
+
+
+
+        }
+
+
+
+      };
+
+
+
+  })();
+
+  jQuery('body').on('mouseenter', '.frondendgraph', function(index){
+
+      var reference = jQuery(this);
+
+      var stockname = jQuery(this).find('.title-box').find('.stockname').text();
+
+      var selected_id = jQuery(this).find('#called_by').attr('class');
+
+      var Id = selected_id.replace("called_by_", "");
+
+      var stockpriceheader = jQuery(this).find('.title-box').find('.instrument-'+Id).find('.lastpriceh').text();
+
+      var changepercentageheader = jQuery(this).find('.title-box').find('.instrument-'+Id).find('.percentageh').text();
+
+      var called_by = jQuery(this).find('.called_by_'+Id).text();
+
+      var rightsidesecond = jQuery(this).find('.rightsidesecond_'+Id).text();
+
+      var rightsidethird = jQuery(this).find('.rightsidethird_'+Id).text();
+
+      var tags = jQuery(this).find('.instrument').val();
+
+      //console.log(stockpriceheader,changepercentageheader,called_by,rightsidesecond,rightsidethird,'pan');
+
+      var expertprofileimage = jQuery(this).find('.expertprofileimage').val();
+
+      var expertname = jQuery(this).find('.expertname').val();
+
+      var expertcomment = jQuery(this).find('.expertcomment').val();
+
+      var expert = [];
+
+      expert.push(expertprofileimage);expert.push(expertname);expert.push(expertcomment);
+
+      var posttitle = jQuery(this).text();
+
+      if( tags.length > 0 && called_by != null && called_by != ''){
+
+
+
+        //var url = '//query.yahooapis.com/v1/public/yql?q=select * from yahoo.finance.quotes where symbol in ("'+tags+'")&env=http://datatables.org/alltables.env&format=json';
+
+        //
+
+        //  var offset = jQuery(this).offset();
+
+        //
+
+        //  var request = jQuery.ajax({
+
+        //
+
+        //    url: url,
+
+        //
+
+        //    type:'GET',
+
+        //
+
+        //    dataType: 'json',
+
+        //
+
+        //    beforeSend: function(jqXHR, opts) {
+
+        //
+
+        //       jQuery.ajaxQ.abortAll(); 
+
+        //
+
+        //    }, 
+
+        //
+
+        //    success: function(data) {
+
+        //
+
+        //        var x = data['query']['results'].quote;
+
+        //
+
+        //        if( x.LastTradePriceOnly != undefined)
+
+        //
+
+        //           if( x.LastTradePriceOnly != null && x.PercentChange != null) {
+
+        //
+
+        //               generategraph(posttitle,x.symbol,x.Name,stockpriceheader,changepercentageheader,rightsidesecond,rightsidethird,expert,called_by);
+
+        //
+
+        //               //generategraph(posttitle,x.symbol,x.Name,x.LastTradePriceOnly,x.PercentChange,x.YearLow,x.YearHigh,expert,checkparam);
+
+        //
+
+        //        }
+
+        //
+
+        //    },
+
+        //
+
+        //    complete: function (data) {
+
+        //
+
+        //    }
+
+
+
+          //}).fail(function(xhr) {
+
+          //      //googleStockPriceFrontGraph(posttitle,tags,stockpriceheader,changepercentageheader,stockname,expert);
+
+          //});
+
+       generategraph(posttitle,tags,stockname,stockpriceheader,changepercentageheader,rightsidesecond,rightsidethird,expert,called_by,reference);
+
+      }
+
+
+
+  });
+
+  function googleStockPriceFrontGraph(posttitle,tags,stockpriceheader,changepercentageheader,stockname,expert){
+
+    var url = 'https://finance.google.com/finance/info?client=ig&q='+tags;
+
+    var request = jQuery.ajax({
+
+      url: url,
+
+      type:'GET',
+
+      dataType: 'jsonp',
+
+      beforeSend: function(jqXHR, opts) {
+
+          jQuery.ajaxQ.abortAll(); 
+
+      },
+
+      success: function(data) {
+
+
+
+        if( data[0].t != null &&  data[0].l_cur != null ){
+
+
+
+          var checkparam = 'google';
+
+
+
+          //generategraph(posttitle,data[0].t,stockname,data[0].l_cur,data[0].cp_fix+'%',data[0].c,0,expert,checkparam);
+
+          
+
+           generategraph(posttitle,data[0].t,stockname,stockpriceheader,changepercentageheader,x.YearLow,x.YearHigh,expert);
+
+        }
+
+
+
+      }
+
+
+
+    });
+
+
+
+    //generategraph(posttitle,tags,stockname,stockpriceheader,changepercentageheader,0,0,expert);
+
+
+
+}
+
+/*check is stock price*/
+
+
+
+  function stockDiff (a, b){
+
+
+
+    return eval(a - b) 
+
+
+
+  }
+
+
+
+ /*function is used to create graph*/
+
+
+
+  function creategraph(symbol){
+
+
+
+    var url = "//quotes.stocktwits.com/chart?symbol="+symbol+"&zoom=1m";
+
+
+
+    jQuery.getJSON(url, function (data) {
+
+
+
+        // split the data set into ohlc and volume
+
+
+
+        var ohlc = [],
+
+
+
+            volume = [],
+
+
+
+            dataLength = data.length,
+
+
+
+            // set the allowed units for data grouping
+
+
+
+            groupingUnits = [[
+
+
+
+                'week',                         // unit name
+
+
+
+                [4]                             // allowed multiples
+
+
+
+            ], [
+
+
+
+                'month',
+
+
+
+                [1, 2, 3, 4, 6]
+
+
+
+            ]],
+
+
+
+
+
+
+
+            i = 0;
+
+
+
+
+
+
+
+        for (i; i < dataLength; i += 1) {
+
+           if (i != 0) {
+
+            ohlc.push([
+
+
+
+                data[i].Date, // the date
+
+
+
+                data[i].Open, // open
+
+
+
+                data[i].High, // high
+
+
+
+                data[i].Low, // low
+
+
+
+                data[i].Last // close
+
+
+
+            ]);
+
+
+
+
+
+
+
+            volume.push([
+
+
+
+                data[i].Date, // the date
+
+
+
+                data[i].Volume // the volume
+
+
+
+            ]);
+
+           }
+
+        }
+
+
+
+       // jQquery('.containerchart').empty();  
+
+
+
+        jQuery('.containerchart').highcharts('StockChart', {
+
+
+
+            rangeSelector: {
+
+
+
+                enabled: !1,
+
+
+
+                inputEnabled: false,
+
+
+
+                selected: 1
+
+
+
+            },
+
+
+
+            plotOptions: {
+
+
+
+              candlestick: {
+
+
+
+                color: "#ED3B3B",
+
+
+
+                upColor: "#8ECF61", 
+
+
+
+                lineColor: "#ED3B3B", 
+
+
+
+                upLineColor: "#8ECF61"
+
+
+
+              },
+
+
+
+               area: {
+
+
+
+                  stacking: "percent",
+
+
+
+                  lineColor: "#ffffff",
+
+
+
+                  lineWidth: 1,
+
+
+
+                  marker: {
+
+
+
+                      enabled: !1
+
+
+
+                  },
+
+
+
+                  fillOpacity: .7
+
+
+
+              },
+
+
+
+              spline: {
+
+
+
+                  marker: {
+
+
+
+                      enabled: !1
+
+
+
+                  }
+
+
+
+              },
+
+
+
+              series: {
+
+
+
+                  states: {
+
+
+
+                      hover: {
+
+
+
+                          marker: {
+
+
+
+                              enabled: !1
+
+
+
+                          }
+
+
+
+                      }
+
+
+
+                  }
+
+
+
+              }
+
+
+
+            },
+
+
+
+            credits: {
+
+
+
+                    text: "",
+
+
+
+                    href: ""
+
+
+
+            },
+
+
+
+            title: {
+
+
+
+                text: ''
+
+
+
+            },
+
+
+
+            tooltip : {
+
+
+
+                color: "#10F80B",             
+
+
+
+                borderColor :  "#10F80B"
+
+
+
+            },
+
+
+
+            exporting: {
+
+
+
+                chartOptions: {
+
+
+
+                    rangeSelector: {
+
+
+
+                        enabled: false
+
+
+
+                    }
+
+
+
+                }
+
+
+
+            },
+
+
+
+            navigator: {
+
+
+
+                    enabled: !1
+
+
+
+                },
+
+
+
+            scrollbar: {
+
+
+
+                enabled: !1
+
+
+
+            },
+
+
+
+            navigation: {
+
+
+
+                buttonOptions: {
+
+
+
+                    enabled: !1
+
+
+
+                }
+
+
+
+            },
+
+
+
+            xAxis: [{
+
+
+
+              labels: {
+
+
+
+                    enabled: false
+
+
+
+                }
+
+
+
+            },
+
+
+
+            {
+
+
+
+              labels: {
+
+
+
+                    enabled: false
+
+
+
+                }
+
+
+
+            }
+
+
+
+            ],
+
+
+
+            yAxis: [{
+
+
+
+                labels: {
+
+
+
+                    align: 'right',
+
+
+
+                    x: -3
+
+
+
+                },
+
+
+
+                title: {
+
+
+
+                    text: ''
+
+
+
+                },
+
+
+
+                height: '60%',
+
+
+
+                lineWidth: 1
+
+
+
+            }, 
+
+
+
+            {
+
+
+
+                labels: {
+
+
+
+                    align: 'right',
+
+
+
+                    x: -3
+
+
+
+                },
+
+
+
+                title: {
+
+
+
+                    text: ''
+
+
+
+                },
+
+
+
+                top: '65%',
+
+
+
+                height: '35%',
+
+
+
+                offset: 0,
+
+
+
+                lineWidth: 1
+
+
+
+            }],
+
+
+
+            series: [{
+
+
+
+                type: 'candlestick',
+
+
+
+                name: symbol,
+
+
+
+                //color: "#ED3B3B",
+
+
+
+                data: ohlc,
+
+
+
+                dataGrouping: {
+
+
+
+                    units: [groupingUnits]
+
+
+
+                }
+
+
+
+            }, {
+
+
+
+                type: 'column',
+
+
+
+                name: 'Volume',
+
+
+
+                data: volume,
+
+
+
+                color: "#DDD",
+
+
+
+                yAxis: 1,
+
+
+
+                dataGrouping: {
+
+
+
+                    units: groupingUnits
+
+
+
+                }
+
+
+
+            }]
+
+
+
+        });
+
+
+
+    });
+
+   
+
+}
+
+
+
+/*function is used to create entire div of graph*/
+
+
+
+ function generategraph(posttitle,symbol,name,price,percent,yearhigh,yearlow,expert,called_by,reference){
+
+
+
+   //console.log(posttitle,symbol,name,price,percent,yearlow,yearhigh,expert,called_by,reference); 
+
+
+
+    var expertimage = (expert[0] != undefined && expert[0] != '' ) ? expert[0] : "";
+
+
+
+    var expertname = (expert[1] != undefined && expert[1] != '' ) ? expert[1] : "";
+
+
+
+    var expertcomment = (expert[2] != undefined && expert[2] != '' ) ? expert[2] : "";
+
+
+
+    //console.log(price,percent);
+
+
+
+    jQuery('.stock_title').text(symbol+name);
+
+
+
+    jQuery('.symbol').text(symbol);
+
+
+
+    jQuery('.name').text(name);
+
+
+
+    jQuery ('.expert-image').empty();
+
+
+
+    jQuery('.expert-name,.expert-advice').text('');
+
+
+
+    if(expertimage != '' && expertname != '' && expertcomment != '' ){
+
+
+
+      jQuery('.expert-advice').text('Expert');
+
+
+
+      jQuery('.expert-name').text(expertname);
+
+
+
+      jQuery('.expert-comment').text(expertcomment);
+
+
+
+      jQuery ('.expert-image').append('<img src='+expertimage+'>');
+
+
+
+    } 
+
+
+
+    /*check for green icon*/
+
+
+
+     if(percent.indexOf('-') === -1){
+
+
+
+       jQuery('.graph-left-side-price').removeClass('mygraph-red');
+
+
+
+       jQuery('.graph-left-side-price').addClass('mygraph-green');
+
+
+
+     }else{
+
+
+
+       jQuery('.graph-left-side-price').removeClass('mygraph-green');
+
+
+
+       jQuery('.graph-left-side-price').addClass('mygraph-red');
+
+
+
+     }
+
+
+
+     jQuery('.percentchange').text('');
+
+
+
+     jQuery('.stockprice').text(price);
+
+
+
+     jQuery('.percentchange').text(percent);
+
+     
+
+     jQuery('.mygraph-green-high,.mygraph-red-low').remove();
+
+     
+
+     if (called_by=='google-finance') {
+
+
+
+        if(yearhigh.indexOf('-') === -1){
+
+
+
+          // for gainer stock
+
+        
+
+          var perviousPrice = parseFloat(price)-parseFloat(yearhigh);
+
+          
+
+          jQuery(".graph-left-year-low,.graph-left-year-high").before("<span class='mygraph-green-high'></span>");
+
+           
+
+        }else{
+
+
+
+          // for loose stock
+
+
+
+          var perviousPrice = parseFloat(price)+parseFloat(yearhigh);
+
+
+
+          jQuery(".graph-left-year-low,.graph-left-year-high").before("<span class='mygraph-red-low'></span>");
+
+           
+
+        }
+
+
+
+        jQuery('.graph-left-year-low').html(perviousPrice.toFixed(2)+'<span class="year-high-text-google" title="Previous Price">Pre. Price</span>');
+
+
+
+        jQuery('.graph-left-year-high').html(yearhigh+'<span class="year-low-text-google" title="Price Change">Change($)</span>');
+
+
+
+     }else{
+
+        
+
+        jQuery(".graph-left-year-high").before("<span class='mygraph-green-high'></span>");
+
+        
+
+        jQuery(".graph-left-year-low").before("<span class='mygraph-red-low'></span>");
+
+        
+
+        jQuery('.graph-left-year-high').html(yearhigh+'<span class="year-high-text" title="Year high" >Year high</span>');
+
+
+
+        jQuery('.graph-left-year-low').html(yearlow+'<span class="year-low-text" title="Year low">Year low</span>');
+
+
+
+     }
+
+
+
+     jQuery('#mygraph-green-high').addClass('mygraph-green-high');
+
+
+
+     jQuery('#mygraph-red-low').addClass('mygraph-red-low');
+
+
+
+     currentView = true;
+
+
+
+     creategraph(symbol);
+
+     
+
+     showingGraph(reference); 
+
+     
+
+     jQuery('.loading-graph').hide();
+
+
+
+  } 
+
+
+
+
+
+
+
+/*script when we mouse hover on heading*/
+
+
+
+ // jQuery('.frondendgraph').on('mouseenter', function(event) {
+
+  function showingGraph(reference){
+
+      //event.preventDefault();
+
+
+
+     // jQuery('.name , .symbol, .stockprice, .percentchange, .graph-left-year-high, .graph-left-year-low').text('');
+
+
+
+     // jQuery('.containerchart').html('');
+
+
+
+      //jQuery ('.expert-image').empty();jQuery('.popups').hide();
+
+
+
+      //jQuery('.graph-left-side-price').removeClass('mygraph-red mygraph-green');
+
+
+
+      //jQuery('#mygraph-green-high').removeClass('mygraph-green-high');
+
+
+
+      //jQuery('#mygraph-red-low').removeClass('mygraph-red-low');
+
+      
+
+      
+
+      jQuery('#loading-graph').show();
+
+
+
+      var parents = jQuery(reference).closest('li'); 
+
+
+
+      //var devicewidth = $(window).width();
+
+
+
+      var headerWidth=  jQuery(".bx-viewport").position();
+
+
+
+      var position =jQuery('.title-box').position();    
+
+
+
+      var pos=  parents.offset().left - parseInt(headerWidth.left) -9;
+
+
+
+      jQuery('.graph-section').show();
+
+
+
+      jQuery('.graphdynamic').css('margin-left',pos);
+
+
+
+      jQuery('.graphdynamic').css('margin-top','-28px');
+
+
+
+      myslider.stopAuto();  
+
+  }
+
+  //});
+
+
+
+  /*script when we mouse leave on heading*/
+
+
+
+ /* jQuery('.frondendgraph').on('mouseleave', function(event) {
+
+
+
+     event.preventDefault();
+
+
+
+     setTimeout(function(){
+
+
+
+      if(!currentView){
+
+
+
+        jQuery('.graph-section').hide();
+
+
+
+      }
+
+
+
+      },500);
+
+
+
+    myslider.startAuto(); 
+
+
+
+ });*/
+
+
+
+  
+
+
+
+  jQuery('.tag-featured').on('mouseover', function(e){
+
+
+
+      jQuery('.graph-section').hide(); 
+
+
+
+  });  
+
+
+
+
+
+
+
+  jQuery('.containerchart, .header-section, .graph-left-side, .graph-right-side').on('mouseenter', function(event) {
+
+
+
+      event.preventDefault();
+
+
+
+      currentView = true;
+
+
+
+      jQuery(this).parents('.graph-section').show();
+
+
+
+      myslider.stopAuto();  
+
+
+
+  });
+
+
+
+
+
+
+
+  jQuery('.graph-section').on('mouseleave', function(event) {
+
+
+
+      event.preventDefault();
+
+
+
+      currentView = false;
+
+
+
+      jQuery(this).hide();
+
+
+
+     myslider.startAuto();  
+
+
+
+  });
+
+
+
+ 
+
+
+
+  jQuery('.featured-articles,.wrap-content,.sidebar-left').on('mouseleave', function(e){
+
+
+
+      jQuery('.graph-section').hide();
+
+
+
+  });
+
+
+
+  jQuery(window).load(function() {
+	jQuery("#websiteloading").hide();
+        jQuery(".sign-btnn").removeAttr("disabled");
+        jQuery(".video_loader").removeClass('section_show').addClass('section_hide');
+        jQuery("
+.video-container").removeClass('section_hide');
+
+  });
+
+
+
+	//Quick Campaign Start		
+
+	  jQuery('.camp-btn').click(function(){
+
+				if(jQuery('.add-camp').hasClass('noView')){
+
+					jQuery('.add-camp').animate({'left': 0}, 300).removeClass('noView');
+					$("object").focus();
+
+				} else {
+
+					jQuery('.add-camp').animate({'left': '-360px'}	, 300).addClass('noView');
+
+			 	};
+
+			});
+
+jQuery('.sbSelector, .sbToggle').on('mouseenter', function(event) {
+      event.preventDefault();
+     jQuery('.fa-common').removeClass('fa-sort-desc');
+     jQuery('.fa-common').addClass('fa-angle-right');
+  });
+
+  jQuery('.sbSelector, .sbToggle').on('mouseleave', function(event) {
+     event.preventDefault();
+     jQuery('.fa-common').removeClass('fa-angle-right fa-sort-right fa-sort-asc');
+     jQuery('.fa-common').addClass('fa-sort-desc');
+  });
+  
+jQuery('.sbOptions').on('mouseenter', function(event) {
+      event.preventDefault();
+     jQuery('.fa-common').removeClass('fa-sort-desc');
+     jQuery('.fa-common').addClass('fa-sort-asc');
+  });
+
+  jQuery('.sbOptions').on('mouseleave', function(event) {
+     event.preventDefault();
+     jQuery('.fa-common').removeClass('fa-angle-right fa-sort-right fa-sort-asc');
+     jQuery('.fa-common').addClass('fa-sort-asc');
+	 jQuery('.fa-common').addClass('fa-sort-desc');
+  });	
+
+
+	//Quick Campaign End
+
+});
+
+</script>
+
+</body>
+
+</html>

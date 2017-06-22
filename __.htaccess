@@ -1,0 +1,12 @@
+# BEGIN W3TC Browser Cache
+Header set Access-Control-Allow-Origin "*"
+# END W3TC Page Cache core
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /retirelynews/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /retirelynews/index.php [L]
+</IfModule>

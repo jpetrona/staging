@@ -1,0 +1,651 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pin 1.0\n"
+"POT-Creation-Date: 2015-01-28 02:29+0200\n"
+"PO-Revision-Date: 2015-01-28 02:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../pin-wp/comments.php:2
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: ../pin-wp/comments.php:24
+msgid "Comments are closed."
+msgstr ""
+
+#: ../pin-wp/comments.php:41 ../pin-wp/template-contact.php:114
+msgid "Name:"
+msgstr ""
+
+#: ../pin-wp/comments.php:48 ../pin-wp/template-contact.php:119
+msgid "Email:"
+msgstr ""
+
+#: ../pin-wp/comments.php:55
+msgid "Comment:"
+msgstr ""
+
+#: ../pin-wp/comments.php:61
+msgid "Leave a Comment"
+msgstr ""
+
+#: ../pin-wp/comments.php:62
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../pin-wp/comments.php:63
+msgid "Submit Comment"
+msgstr ""
+
+#: ../pin-wp/footer.php:22
+msgid "Random Articles"
+msgstr ""
+
+#: ../pin-wp/footer.php:37 ../pin-wp/header.php:96 ../pin-wp/index.php:54
+#: ../pin-wp/template-home.php:51
+#: ../pin-wp/functions/widgets/widget-cat.php:39
+#: ../pin-wp/functions/widgets/widget-posts.php:37
+#: ../pin-wp/functions/widgets/widget-review-rand.php:37
+#: ../pin-wp/functions/widgets/widget-review-recent.php:37
+#: ../pin-wp/functions/widgets/widget-review.php:37
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:44
+#: ../pin-wp/functions/widgets/widget-top-posts.php:37
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: ../pin-wp/functions.php:74
+msgid "Header Navigation"
+msgstr ""
+
+#: ../pin-wp/functions.php:75
+msgid "Categories Navigation"
+msgstr ""
+
+#: ../pin-wp/functions.php:136
+msgid "Twitter Username"
+msgstr ""
+
+#: ../pin-wp/functions.php:137
+msgid "Facebook Username"
+msgstr ""
+
+#: ../pin-wp/functions.php:138
+msgid "Google+ Username"
+msgstr ""
+
+#: ../pin-wp/functions.php:180
+msgid "View"
+msgstr ""
+
+#: ../pin-wp/functions.php:182
+msgid "Views"
+msgstr ""
+
+#: ../pin-wp/functions.php:210
+msgid "Article Page Options"
+msgstr ""
+
+#: ../pin-wp/functions.php:220
+msgid "Video Youtube"
+msgstr ""
+
+#: ../pin-wp/functions.php:224
+msgid "Add Youtube code ex: HIrMIeN5ttE"
+msgstr ""
+
+#: ../pin-wp/functions.php:237
+msgid "Video Vimeo"
+msgstr ""
+
+#: ../pin-wp/functions.php:241
+msgid "Add Vimeo code ex: 7449107"
+msgstr ""
+
+#: ../pin-wp/functions.php:252
+msgid "Gallery"
+msgstr ""
+
+#: ../pin-wp/functions.php:255
+msgid "Image with any size!"
+msgstr ""
+
+#: ../pin-wp/functions.php:262
+msgid "Featured Image"
+msgstr ""
+
+#: ../pin-wp/functions.php:264
+msgid "Hide Featured Image on single page for this article"
+msgstr ""
+
+#: ../pin-wp/functions.php:426
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:164
+msgid "Install Required Plugins"
+msgstr ""
+
+#: ../pin-wp/functions.php:427
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:165
+msgid "Install Plugins"
+msgstr ""
+
+#: ../pin-wp/functions.php:428
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:166
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: ../pin-wp/functions.php:429
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: ../pin-wp/functions.php:440
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:180
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:510
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: ../pin-wp/functions.php:441
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:181
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1908
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: ../pin-wp/functions.php:442
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: ../pin-wp/header.php:80
+msgid "Featured Articles"
+msgstr ""
+
+#: ../pin-wp/index.php:24
+msgid "All posts in:"
+msgstr ""
+
+#: ../pin-wp/index.php:26
+msgid "All posts tagged in:"
+msgstr ""
+
+#: ../pin-wp/index.php:28
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../pin-wp/index.php:30
+msgid "All posts by:"
+msgstr ""
+
+#: ../pin-wp/index.php:32
+msgid "Error 404 - Not Found"
+msgstr ""
+
+#: ../pin-wp/index.php:32
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#: ../pin-wp/index.php:40 ../pin-wp/index.php:43 ../pin-wp/index.php:46
+#: ../pin-wp/template-home.php:37 ../pin-wp/template-home.php:40
+#: ../pin-wp/template-home.php:43
+msgid "Advertisement"
+msgstr ""
+
+#: ../pin-wp/index.php:66 ../pin-wp/single.php:40
+#: ../pin-wp/template-home.php:63
+#: ../pin-wp/functions/widgets/widget-cat.php:49
+#: ../pin-wp/functions/widgets/widget-posts.php:47
+#: ../pin-wp/functions/widgets/widget-review-rand.php:47
+#: ../pin-wp/functions/widgets/widget-review-recent.php:48
+#: ../pin-wp/functions/widgets/widget-review.php:47
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:54
+#: ../pin-wp/functions/widgets/widget-top-posts.php:47
+msgid "Written by"
+msgstr ""
+
+#: ../pin-wp/index.php:72 ../pin-wp/single.php:23
+#: ../pin-wp/template-home.php:69
+msgid "ago"
+msgstr ""
+
+#: ../pin-wp/index.php:87 ../pin-wp/index.php:97
+#: ../pin-wp/template-home.php:84 ../pin-wp/template-home.php:94
+msgid "Newer Entries"
+msgstr ""
+
+#: ../pin-wp/index.php:88 ../pin-wp/index.php:96
+#: ../pin-wp/template-home.php:85 ../pin-wp/template-home.php:93
+msgid "Older Entries"
+msgstr ""
+
+#: ../pin-wp/searchform.php:2
+msgid "Live Search ..."
+msgstr ""
+
+#: ../pin-wp/single.php:25
+msgid "Comments"
+msgstr ""
+
+#: ../pin-wp/single.php:25
+msgid "Comment"
+msgstr ""
+
+#: ../pin-wp/single.php:109
+msgid "Article Tags:"
+msgstr ""
+
+#: ../pin-wp/single.php:115
+msgid "Article Categories:"
+msgstr ""
+
+#: ../pin-wp/single.php:160
+msgid "Recent Articles"
+msgstr ""
+
+#: ../pin-wp/single.php:175 ../pin-wp/single.php:215
+#: ../pin-wp/functions/widgets/widget-cat.php:68
+#: ../pin-wp/functions/widgets/widget-posts.php:64
+#: ../pin-wp/functions/widgets/widget-review-rand.php:64
+#: ../pin-wp/functions/widgets/widget-review-recent.php:65
+#: ../pin-wp/functions/widgets/widget-review.php:64
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:71
+#: ../pin-wp/functions/widgets/widget-top-posts.php:64
+msgid "by"
+msgstr ""
+
+#: ../pin-wp/single.php:185
+msgid "Related Articles"
+msgstr ""
+
+#: ../pin-wp/single.php:231
+msgid "Comments to"
+msgstr ""
+
+#: ../pin-wp/template-contact.php:103
+msgid "Sorry, an error occured."
+msgstr ""
+
+#: ../pin-wp/template-contact.php:124
+msgid "Subject:"
+msgstr ""
+
+#: ../pin-wp/template-contact.php:129
+msgid "Message:"
+msgstr ""
+
+#: ../pin-wp/template-contact.php:133
+msgid "Submit Message"
+msgstr ""
+
+#: ../pin-wp/template-contact.php:133
+msgid "All Fields are mandatory!"
+msgstr ""
+
+#: ../pin-wp/admin/classes/class.options_machine.php:556
+msgid "Last Backup : "
+msgstr ""
+
+#: ../pin-wp/admin/front-end/options.php:32
+msgid "Themes"
+msgstr ""
+
+#: ../pin-wp/admin/front-end/options.php:33
+msgid "Support"
+msgstr ""
+
+#: ../pin-wp/admin/front-end/options.php:46
+#: ../pin-wp/admin/front-end/options.php:70
+msgid "Save All Changes"
+msgstr ""
+
+#: ../pin-wp/admin/front-end/options.php:71
+msgid "Options Reset"
+msgstr ""
+
+#: ../pin-wp/functions/widgets.php:6
+msgid "Home Sidebar (Left)"
+msgstr ""
+
+#: ../pin-wp/functions/widgets.php:15
+msgid "Default Sidebar (Right)"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:167
+msgid "Something went wrong."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:182
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:537
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2120
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:565
+#, php-format
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:738
+msgid "Dismiss this notice"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1125
+msgid "External Link"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1130
+msgid "Private Repository"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1133
+msgid "Pre-Packaged"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1137
+msgid "WordPress Repository"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1140
+msgid "Required"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1140
+msgid "Recommended"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1143
+msgid "Not Installed"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1145
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1147
+msgid "Not Updated"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1149
+msgid "Active"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1343
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1359
+msgid "Plugin"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1360
+msgid "Source"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1361
+msgid "Type"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1362
+msgid "Status"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1380
+msgid "Install"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1381
+msgid "Activate"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1891
+msgid "Install package not available."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1892
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1893
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1894
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1895
+msgid "Plugin install failed."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1896
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:1907
+msgid "Plugin activation failed."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2017
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2018
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2018
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2027
+msgid "Show Details"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2018
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2027
+msgid "Hide Details"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2019
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2020
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2024
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2025
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2026
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2027
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2028
+msgid "All installations have been completed."
+msgstr ""
+
+#: ../pin-wp/functions/custom/class-tgm-plugin-activation.php:2029
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: ../pin-wp/functions/custom/comments.php:21
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../pin-wp/functions/custom/comments.php:32
+msgid "Pingback:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-banner.php:11
+msgid "Advertisement - Paste your HTML or JavaScript code."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-banner.php:12
+msgid "Custom: Advertisement 300px"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-banner.php:43
+#: ../pin-wp/functions/widgets/widget-cat.php:96
+#: ../pin-wp/functions/widgets/widget-categories.php:44
+#: ../pin-wp/functions/widgets/widget-posts.php:91
+#: ../pin-wp/functions/widgets/widget-review-rand.php:91
+#: ../pin-wp/functions/widgets/widget-review-recent.php:92
+#: ../pin-wp/functions/widgets/widget-review.php:91
+#: ../pin-wp/functions/widgets/widget-tags.php:47
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:98
+#: ../pin-wp/functions/widgets/widget-top-posts.php:91
+msgid "Title:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-banner.php:48
+msgid "Paste your HTML or JavaScript code here:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-cat.php:11
+msgid "Posts by Categories"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-cat.php:12
+msgid "Custom: Posts by Categories"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-cat.php:101
+#: ../pin-wp/functions/widgets/widget-posts.php:96
+#: ../pin-wp/functions/widgets/widget-review-rand.php:96
+#: ../pin-wp/functions/widgets/widget-review-recent.php:97
+#: ../pin-wp/functions/widgets/widget-review.php:96
+#: ../pin-wp/functions/widgets/widget-tags.php:53
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:103
+#: ../pin-wp/functions/widgets/widget-top-posts.php:96
+msgid "Number of Posts:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-cat.php:106
+msgid "Category:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-categories.php:11
+msgid "Display Categories in 2 columns."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-categories.php:12
+msgid "Custom: Categories"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:12
+msgid "Feedburner subscribe widget."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:13
+msgid "Custom: Feedburner Subscribe"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:29
+msgid "Enter your e-mail address"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:31
+msgid "Subscribe"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:60
+msgid "Widget Title:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:65
+msgid "Feedburner ID:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-feedburner.php:70
+msgid "Description:"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-posts.php:11
+msgid "Your site's most recent Posts."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-posts.php:12
+msgid "Custom: Recent Posts"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review-rand.php:11
+msgid "Your site's Random Reviews."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review-rand.php:12
+msgid "Custom: Random Reviews"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review-recent.php:11
+msgid "Your site's Recent Reviews."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review-recent.php:12
+msgid "Custom: Recent Reviews"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review.php:11
+msgid "Your site's Best Reviews."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-review.php:12
+msgid "Custom: Best Reviews"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-tags.php:11
+msgid "Display your most used Tags."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-tags.php:12
+msgid "Custom: Most used Tags"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:11
+msgid "Top posts in last 30 days by comments."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-top-posts-30days.php:12
+msgid "Custom: Top Articles in last 30 days"
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-top-posts.php:11
+msgid "Popular Posts - Display your Popular / Top Posts by comments."
+msgstr ""
+
+#: ../pin-wp/functions/widgets/widget-top-posts.php:12
+msgid "Custom: Popular Posts"
+msgstr ""

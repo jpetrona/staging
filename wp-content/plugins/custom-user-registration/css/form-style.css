@@ -1,0 +1,105 @@
+.sign-box {
+    border-radius: 17px;
+    box-shadow: 0 0 6px 4px grey;
+    margin: 2.5% auto 0;
+	margin-bottom:26px;
+    width: 27%;
+	}
+.margin-default-box {
+    height: 1px;
+}
+.sign-bottom {
+    background-color: #f3f4f6;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 12px 20px 20px;
+}
+.mrgn-cls {
+    margin-bottom: 20px;
+}
+.errorbox{
+	float:left;
+	margin: 50px 0 0 293px;
+	width:500px;
+	}
+.sign-text {
+    color: grey;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+	.sign-top {
+    background-color: #ffffff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 20px 20px 4px;
+	
+	}
+	
+	.sign-section {
+   /* background-image: url("../images/bgs.jpg");*/
+    background-position: 53% 0;
+    border-bottom: 2.5px solid #50e8f8;
+    height: auto;
+    width: 100%;
+}
+
+	.mrgn-cls {
+    margin-bottom: 20px;
+	}
+	.form-lbl-text {
+    color: grey;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 0;
+	}
+	
+	.inpt {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    display: block;
+    font-size: 14px;
+    height: 28px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 91%;
+	}
+	
+	.form-control.inpt {
+    background-color: #ffffff !important;
+	}
+	.sign-btnn {
+    background-color: transparent;
+    border: 1px solid #66afe9;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    color: grey;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    outline: 0 none;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 97%;
+}
+.sucess {
+    color: #090;
+    float: left;
+    margin: 46px 0 0 193px;
+}
+.error
+{
+color:#F00;
+margin:0 0 0 193px;	
+}
